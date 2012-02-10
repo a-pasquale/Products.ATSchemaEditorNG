@@ -1,0 +1,29 @@
+
+If you are new to ATSchemaEditorNG then this document is the right one for you.
+This document is currently under development. Feel free to send suggestions to
+the maintainer.
+
+Main purpose of ATSE: You want to let users manage schemas TTW w/o ever
+touching any code on the filesystem. 
+
+One quick example could be the management of address records. You have two
+content types where the first is a folderish one that contains address record
+objects holding details like full name and phone. 
+
+Now your customer wants these fields to be manageable by himself because there
+is often the need to add new fields (e.g. record has email field but another
+email must be recorded) or even delete ones. Your customer also needs full
+control over the rights management because security assertions for fields
+change over time. Ok you say - we have ATSE and we'll give you full control. 
+
+Fire up your editor and lets create the folderish type that'll hold all
+address records:
+
+class AddressContainer(BaseFolder, SchemaEditor):
+
+    meta_type = portal_type = 'AddressContainer'
+    archetype_name = 'AddressContainer'
+    allowed_content_types = ('Address', )
+
+** more to come **
+

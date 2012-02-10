@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en-US"
+      i18n:domain="ATSchemaEditorNG">
+
+<body>
+
+  <metal:block define-macro="columns">
+    <div class="field" style="clear: both">
+      <label i18n:translate="label_dg_columns">Columns definition</label>
+      <div>
+        <div class="formHelp" i18n:translate="help_dg_parameters">
+            Please enter DataGrid columns definition. There are three supported formats.
+            <ul>
+                <li>The first one contains only ID|TITLE pairs for the particular column, </li>
+                <li>the second one contains ID|TITLE|VOCABULARY_METHOD definition. "vocabulary_method" has to 
+                    be a method defined in the class instance or "Script (Python)" defined in the 
+                    skin layer (for example in portal_skin/custom folder). Vocabulary method/script 
+                    must return DisplayList instance.</li> 
+                <li>The third one contains ID|TITLE|(TYPE)- where type is one of the following: printable,int,decimal,mail,notempty</li>
+            </ul>
+            The three described line formats may be mixed. 
+            Invalid definitions will be silently ignored.
+        </div>
+        <div>
+        <textarea name="fielddata.columns:record:lines" 
+                  style="width:96%"
+                  rows="10"
+                  tal:condition="python:hasattr(field.widget, 'columns')"
+                  tal:content="python:here.atse_generateDataGridColumnList(field)">
+             Column ids and titles     
+        </textarea>
+        </div>
+      </div>
+    </div>
+  </metal:block>
+
+  <metal:block define-macro="definition">
+    <div class="field" style="clear: both">
+      <label i18n:translate="label_dg_columns">Columns definition</label>
+      <div>
+        <div class="formHelp" i18n:translate="help_dg_parameters">
+            Please enter DataGrid columns definition. There are two supported formats. 
+            The first one contains only id|title pairs for the particular column, 
+            the second one contains id|title|vocabulary_method definition. "vocabulary_method" has to 
+            be a method defined in the class instance or "Script (Python)" defined in the 
+            skin layer (for example in portal_skin/custom folder). Vocabulary method/script 
+            must return DisplayList instance. The two described line formats may be mixed. 
+            Invalid definitions will be silently ignored.
+        </div>
+        <div>
+        <textarea name="fielddata.columns:record:lines" 
+                  style="width:96%"
+                  rows="10"
+                  tal:condition="python:hasattr(field.widget, 'columns')"
+                  tal:content="python:here.atse_generateDataGridColumnList(field)">
+             Column ids and titles     
+        </textarea>
+        </div>
+      </div>
+    </div>
+  </metal:block>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2005-07-08 16:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: ATSchemaEditorNG\n"
+
+
+# Original: "Now editing schema for ${portal_type}"
+msgid "atse_editing_schema_for_type"
+msgstr ""
+
+# Original: "Unmanaged and missing fields have been synchronized"
+msgid "atse_fields_synced"
+msgstr ""
+
+# Original: "Empty ID given"
+msgid "atse_empty_name"
+msgstr ""
+
+# Original: "Schemata \"$schemata\" already exists"
+msgid "atse_exists"
+msgstr ""
+
+# Original: "\"$schemata\" is an invalid ID for a schemata"
+msgid "atse_invalid_id_for_schemata"
+msgstr ""
+
+# Original: "Schemata added"
+msgid "atse_added"
+msgstr ""
+
+# Original: "Can not remove this schema because it is protected from deletion"
+msgid "atse_can_not_remove_schema"
+msgstr ""
+
+# Original: "Can not remove the last schema"
+msgid "atse_can_not_remove_last_schema"
+msgstr ""
+
+# Original: "The schemata contains fields that can not be deleted"
+msgid "atse_schemata_contains_undeleteable_fields"
+msgstr ""
+
+# Original: "Schemata deleted"
+msgid "atse_deleted"
+msgstr ""
+
+# Original: "field \"$name\" can not be deleted because it is protected from deletion"
+msgid "atse_field_not_deleteable"
+msgstr ""
+
+# Original: "Field deleted"
+msgid "atse_field_deleted"
+msgstr ""
+
+# Original: "Field name is empty"
+msgid "atse_empty_field_name"
+msgstr ""
+
+# Original: "\"$id\" is not a valid ID"
+msgid "atse_not_a_valid_id"
+msgstr ""
+
+# Original: "\"$id\" already exists"
+msgid "atse_field_already_exists"
+msgstr ""
+
+# Original: "Field added"
+msgid "atse_field_added"
+msgstr ""
+
+# Original: "unknown field type: $field"
+msgid "atse_unknown_field"
+msgstr ""
+
+# Original: "unknown widget type: $widget"
+msgid "atse_unknown_widget"
+msgstr ""
+
+# Original: "Field changed"
+msgid "atse_field_changed"
+msgstr ""
+
+# Original: "Schemata moved to left"
+msgid "atse_moved_left"
+msgstr ""
+
+# Original: "Schemata moved to right"
+msgid "atse_moved_right"
+msgstr ""
+
+# Original: "Field moved up"
+msgid "atse_field_moved_up"
+msgstr ""
+
+# Original: "Field moved down"
+msgid "atse_field_moved_down"
+msgstr ""
+
+# Original: "Field moved to other fieldset"
+msgid "atse_field_moved"
+msgstr ""
+
+# Original: "Can not determine portal_type of managed objects (${portal_type})..."
+msgid "atse_unknown_portal_type"
+msgstr ""
+
+# Original: "Objects of type ${portal_type} updated successfully"
+msgid "atse_objects_updated"
+msgstr ""

@@ -1,0 +1,12 @@
+- make field / widget registry stuff aware of centralized AT field and widget
+  registry
+
+- move 'validators' into field settings area and use a validators registry
+
+- move 'required' and 'create index' options into field settings area
+
+- allow for separate custom hooks for field settings, widget settings,
+  storage settings, and general settings; field, widget, and storage custom
+  hooks should be either specific to a type or for ALL types
+
+- Reorganize code - SchemaEditor.py is becoming rather big

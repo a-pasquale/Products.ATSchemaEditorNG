@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en-US"
+      i18n:domain="ATSchemaEditorNG">
+
+<body>
+
+  <metal:block define-macro="upload">
+    <div class="field" style="clear: both">
+      <label i18n:translate="label_upload">Upload file</label>
+      <div>
+        <div class="formHelp" i18n:translate="help_upload">
+            Upload here a file that should be associated to this field.
+        </div>
+        <tal:do define="accessor python:here.atse_getAttachedFieldFileUnit(field.getName());
+                        fieldName field/getName;
+                        showLink python:1;
+                        field python:here.atse_getAttachedFieldFile(field.getName())">
+        <metal:do use-macro="here/widgets/file/macros/file_edit"/>
+        </tal:do>
+      </div>
+    </div>
+  </metal:block>
+
+</body>
+</html>

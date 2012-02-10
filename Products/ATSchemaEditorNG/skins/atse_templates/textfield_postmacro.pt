@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en-US"
+      i18n:domain="ATSchemaEditorNG">
+
+<body>
+
+  <metal:block define-macro="field_params"
+               tal:define="ctypes python:field.allowable_content_types;
+	                   alltypes here/atse_getTextFieldContentTypes">
+    <tal:if condition="python:here.atse_hasFeature('EXTENDED_TEXTFIELD_CAPS')">
+    <div class="field">
+      <label i18n:translate="label_textfield_allowable_ct">Allowable content types</label>
+      <div>
+        <select name="fielddata.allowable_content_types:record:list" size="5" tal:attributes="size python:len(alltypes)" multiple="multiple">
+	   <tal:block tal:repeat="ctype alltypes">
+               <option value="text/plain" tal:attributes="value ctype; selected python:test(ctype in ctypes, 'selected', None)" tal:content="ctype">text/plain</option>
+	   </tal:block>    
+        </select>
+	<input type="button" name="refresh" onclick="this.form.submit();return true;" value="Refresh" i18n:attributes="value" />
+      </div>
+    </div>
+    <div class="field">
+      <label i18n:translate="label_textfield_default_ct">Default content type</label>
+      <div>
+         <select name="fielddata.default_content_type:record:string" size="1">
+	   <tal:block tal:repeat="ctype ctypes">
+               <option value="text/plain" tal:attributes="value ctype; selected python:test(ctype==field.default_content_type, 'selected', None)" tal:content="ctype">text/plain</option>
+	   </tal:block>    
+        </select>
+     </div>
+    </div>
+    <div class="field">
+      <label i18n:translate="label_textfield_default_outtype">Default output type</label>
+      <div>
+         <select name="fielddata.default_output_type:record:string" size="1">
+	   <tal:block tal:repeat="ctype ctypes">
+               <option value="text/plain" tal:attributes="value ctype; selected python:test(ctype==field.default_output_type, 'selected', None)" tal:content="ctype">text/plain</option>
+	   </tal:block>    
+        </select>
+      </div>
+    </div>
+    </tal:if>
+  </metal:block>
+
+</body>
+</html>

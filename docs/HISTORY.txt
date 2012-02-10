@@ -1,0 +1,368 @@
+0.6 (unreleased)
+    - Eggified completely
+      [spamsch]
+
+    - REST fixes
+      [ajung]
+
+    - Various Plone 3 fixes
+      [macadames]
+
+0.5.1 (24.03.2010)
+
+    - change atse_updateManagedSchema so it's waking up only objects
+      that need to be updated [amleczko]
+
+0.5.0 (16.03.2010)
+
+    - Added Select to the StringField selection
+      [spamsch]
+
+    - Fixed #13: Error during tool access via ZMI.
+      [spamsch]
+
+    - Get rid of CMFCorePermissions
+      [naro]
+
+    - Added new atse_addOrReplaceField method.
+      [spamsch]
+
+    - Added more configuration options for text fields and for
+      storage selection. Look at config.py.
+      [spamsch]
+
+0.4.7 (01.10.2007)
+
+    - Added schema template editor - allows defining re-usable schemata. 
+      [mkoch,ctheune]
+
+0.4.6 (never released)
+
+    - Fixed #12: isEmpty always shown als activated validator.
+      [spamsch]
+
+    - Fixed #11: ReferenceBrowserWidget was not available. Thanks to
+      Alexander Pilz for finding this.
+      [spamsch]
+
+    - supplied missing import: this fixes #9 Broken uninstall method
+      [lzdych]
+
+0.4.6rc1 (17.08.2007)
+
+    - Started writing some simple howto (doc/HOWTO.txt)
+      [spamsch]
+
+    - Added new feature flag HAS_MANAGEMENT_UI_FUNCTIONALITY that
+      can be used to control if management functions are displayed.
+      [spamsch]
+
+    - UI p0rn (much more to come)
+      [spamsch]
+
+    - Fixed bug where a security check did not success for TTW added
+      schemas. Thanks to Hedley Roos.
+      [spamsch]
+
+    - Added a patch for Products.validation.RangeValidator to relax the
+      max value check (instead of value < maxval we check value <= maxval)
+      and added there tolerance to string typed max and min.
+      [spamsch]
+
+    - Extended editor so that you can pass your own parameters to each
+      validator that supports parameters (like inNumericRange). Also
+      added a bridge to non-registered RegexValidator so that users
+      can input their own regular expression.
+      [spamsch]
+
+    - Extended editor so that you can now upload a file to each field.
+      Usecase: Fields based upon editor defined fields want to have a
+      template.
+
+      Example:
+
+        atse_config.field_registry.update({'ExcelField': {'field': ExcelField, 
+                                                 'allowed_widgets':['ExcelWidget', 'FileWidget', ],
+                                                 'post_method':'atse_attachFilePostMethod',
+                                                 'post_macro':'here/fileattach_macros/macros/upload'}})
+
+      Simply define post_method and post_macro as defined here. For this
+      example an excel file can be uploaded to excel fields and serve as template.
+      You can then access the attached file: schemaeditor.atse_getAttachedFieldFile(<fieldname>).
+      [spamsch]
+
+    - Revamped validator selection so that it shows a list of available
+      validators instead of having the user input them.
+      [spamsch]
+
+    - Added support for ATVocabularyManager including UI selection of vocabularies.
+      [spamsch]
+
+    - Introduced new flag HAS_FIELD_VISIBILITY_ENABLED that controls
+      if the UI should show the visibility controls for a field.
+      [spamsch]
+
+    - Introduced a new flag HAS_SECURITY_MANAGEMENT_ENABLED that controls
+      if the UI shows field security management related stuff.
+      [spamsch]
+
+    - Introduced new method atse_hasFeature(name) that can be used to
+      check if a given feature (defined in config.py) is available.
+      [spamsch]
+
+    - Fixed field->widget associations defined in config.py. The complete
+      select line (like Flex or Radio) were not included.
+      [spamsch]
+
+    - Added methode atse_reinitializeRegistries because upon fresh registration
+      of fields and widgets instances do not get the changes.
+      [spamsch]
+
+    - documentation updates - clarify maintainership and add contributions
+      [spamsch]
+
+0.4.5 (never released)
+
+    - Fixed uninstall procedure - CMFQI does not remove configlets
+      Thanks to IOhannes m zmoelnig for the fix.
+      [spamsch]
+
+    - Added permission handling for fields. For each field you can
+      now select the permission from an predefined list 
+      (from site_properties/atsePossible*Permissions)
+      [spamsch]
+
+    - Added some constraints for allowed widgets. Look at config.py
+      to see what changed (allowed_widgets). For each field we now
+      define a set of acceptable widgets. Now you can't select an IntWidget
+      for a ReferenceField anymore :-)
+      [spamsch]
+
+    - Added type support for DataGridField. That means that you can specify a types
+      for each of the fields you define. Needs patched version of DataGridField!
+      Please make sure to apply the included diff (in doc/datagridfield-validatecolumn.diff)
+      to a 1.5.0 version of DataGridField (MoreFieldsAndWidgets/DataGridField/tags/1.5.0).
+      If you don't do this ATSE will not include DataGridFieldSupport!
+
+      Do the following to patch correctly:
+      $ cd <path_to_DataGridField>
+      $ cat version.txt
+      1.5.0
+      $ patch -p 0 < ../ATSchemaEditorNG/doc/datagridfield-validatedcolumn.diff
+      [spamsch]
+
+0.4.4 (18.04.2007)
+
+    - Fixed DataGridWidget failure
+      [spamsch]
+
+    - Fixed references to zLOG replacing with logging package
+      [spamsch]
+
+    - added MultiCheckbox widget - defined as MultiSelectionWidget(format="checkbox")
+      [naro]
+
+    - added vocabulary proxy method and option to use python scripts as vocabulary source.
+      Additionaly to key|value and method:methodname as vocabulary source, there can be 
+      'script:' (without script name). Script name is computed automaticaly as
+      atse_<portal type>_<fieldname>Vocabulary. 
+
+      Example:: 
+
+          Portal type: 'Target 1', field countryType::
+
+          atse_Target1_countryTypeVocabulary - this is name of the python script or external method 
+          [naro]
+  
+    
+    - portal_status_message is encoded to utf8 before sent to browser.
+      Plone 2.5 returns translated strings in unicode.
+      [naro]
+
+    - made use of FD in atse_update consistent. Now you can
+      always use dictionaries.
+      [spamsch]
+
+    - added one more test that uses atse_update to create field
+      [spamsch]
+
+0.4.3 (10.10.2006)
+
+    - more tests for portal_factory madness
+      [spamsch]
+
+    - fixed DataGridField templates related to atseng: schema editor template
+      was broken after DataGridField was selected as field type
+      [lzdych]
+
+    - ATSE tool is no longer implicitly available
+      [spamsch]
+
+    - fixed broken schema editor template after new schema is created
+      [lzdych]
+
+    - Added one more check for portal_factory types. Could not model
+      a test for parent of a folder being TempFolder when using
+      PortalFactory but it seems that it fixes some errors on other
+      instances and has no impact on running ones 
+      [spamsch]
+
+0.4.2 (27.06.2006)
+
+    - disabled automatic creation of backup file. This configuration
+      is done over property atseAutomaticBackupWhenUpdateSchema in
+      site_properties. If users want to have automatic backup
+      then this property needs to be enabled.
+      [spamsch]
+
+    - disabled installation of example types in config.py
+      If types should be installed then enable property in config.py
+      [spamsch]
+
+    - some bugfixes to make ParentManagedSchema play nicely with
+      portal_factory managed types. Bug reported by Aaron VanDerlip
+      [spamsch]
+
+    - added support for DataGridField/Widget (if DG is available)
+      Please read doc/DATAGRID.txt
+      [naro]
+
+    - updated i18n, updated Czech translation
+      [naro]
+
+    - fixed minor bug in ReferenceField/Widget handling
+      [naro]
+
+0.4.1 (08.06.2006)
+
+    - Fixed some documentation lack: Newly created objects
+      not longer automatically update schema from Editor since
+      0.4. Added extensive documentation about this change.
+      [spamsch]
+
+    - Added tests to test changes since 0.4
+      [spamsch]
+
+0.4 (19.05.2006)
+
+    - SchemaEditor: 
+        - Added xml import and export functionality
+        - Bugfix for non working ordering mode
+        - Fixes for schema syncing - Schemas are now never synced w/o explicit user action
+        - Added dynamic object registering support
+        - Added role based field permission settings
+          [spamsch]
+
+    - reworked some of the template stuff to make dynamic registration of types possible
+      [spamsch]
+
+0.3.3 (02.04.2006)
+
+   - added support for ImageField max_size and sizes properties
+
+   - added support for AnnotationStorage and MetadataStorage
+
+   - moved "Create index" checkbox from widget setting so the field
+     settings (field is indexed, not widget!) and renamed to
+     "Searchable"
+
+   - installation of ATSchemaEditorNG now installs the schema editor
+     tool.  Additionaly, a configlet is registered that makes the
+     schema editor available in the Plone control panel.
+
+   - use prefs_main_template macro (instead of main macro) when
+     rendering schema editor
+
+   - handle the absence of a default schema gracefully by displaying a
+     message instead of raising an exception
+
+   - handle more ReferenceField properties like
+     'vocabulary_display_path_bound', 'multiValued', 'allowed_types'
+     and 'checkbox_bound'.
+
+   - allow setting 'startup_directory' for ReferenceBrowserWidget.
+
+   - Fixed bug when computing default value for field.
+
+   - Allow selection of ReferenceWidget in addition to
+     ReferenceBrowserWidget for reference fields.
+
+   - added support for allowable_content_types, default_output_type
+     and default_content_type in TextField
+
+0.3.2 (24.09.2005)
+
+   - SchemaEditor now overrides __setstate__ to do instance variable
+     initialization, if necessary.
+
+   - added special edit accessor for ReferenceFields
+
+   - schema selector bug fix
+
+0.3.1 (unreleased)
+
+   - added support for sync'ing unmanaged and new fields from the
+     source code, to bring cached ATSE schemas into sync w/ any
+     changes in the source.  NOTE: must run
+     schema_editor._migrateObjPtype() for each schema editor to
+     convert the _obj_ptype attribute from a list to an OOBTree
+
+0.3.0 (unreleased)
+
+   - added field, widget, and storage registry functionality
+
+   - added support for atse_managed field attribute
+
+   - schema editor now honors accessors and mutators explicitly defined
+     in python schema, but only if the methods are actually defined on
+     the object
+
+0.23 (unreleased)
+
+   - fixed handling of widget.help
+
+0.22 (08.01.2005)
+
+    - schemas can be exported as text
+
+    - Schemas can now be managed through a tool (SchemaEditorTool.py)
+      and not only through a folder.
+
+    - new client mixin class ToolManagedSchema
+
+    - persistency fix in schema registration
+
+0.21 (2.11.2004)
+
+    - added support for validators
+
+    - fixed some missing parameters in redirection URLs
+
+0.2 (1.10.2004)
+
+    - Added developer mode: Look @ config.py for information
+
+    - Beautyfied view a little bit
+
+    - Added a selection box where you can select registered objects
+      
+    - Added methods to register objects not only schematas
+
+    - Moved updateSchema method to SchemaEditor.py
+
+    - Fixed bug that caused the objects' id to be saved in unicode
+
+    - Fixed tests
+
+    - Added some field to control if widget is visible
+
+    - added schema registration infrastructure (support for multiple schemas)
+
+    - lots of API changes
+
+
+0.1 (17.09.2004)
+
+    - initial release (backport from PloneCollectorNG)
+
+    - refactored

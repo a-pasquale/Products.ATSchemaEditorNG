@@ -1,0 +1,786 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en-US"
+      i18n:domain="ATSchemaEditorNG">
+
+<head></head>
+<body>
+
+<metal:div metal:define-macro="selection">
+  <div class="portlet" id="registerd-objects">
+    <h5 i18n:translate="selection">Registered Objects</h5>
+    <div class="portletBody">
+     <div style="margin: 5px 1px 5px 1px;">
+         <form method="POST" tal:attributes="action string:${context/absolute_url}/atse_selectRegisteredSchema">
+            <input type="hidden" name="schema_template" value="#"
+                 tal:attributes="value SCHEMA_TEMPLATE" />
+            <select name="selection:string">
+              <span tal:omit-tag="" tal:repeat="item here/atse_getRegisteredSchemata">
+              <option tal:attributes="value item;
+                                      selected python: item == SCHEMA_ID"
+                      tal:content="item" />
+              </span>
+            </select>
+            <input type="submit" i18n:attributes="value" class="standalone" value="select" name="submit" />
+            <input type="submit" class="destructive" value="unregister" name="unregister"/>
+         </form>
+    </div>
+   </div>
+  </div>
+</metal:div>
+
+<metal:div metal:define-macro="registerobject">
+  <tal:do define="already here/atse_getRegisteredSchemata;ptt python:[o for o in here.atse_getManagedTypes() if o not in list(already) + list(site_properties.atseNotManageablePortalTypes)]">
+  <div class="portlet" id="register-objects">
+    <h5 i18n:translate="register_selection">Register Objects</h5>
+    <div class="portletBody">
+     <div style="margin: 5px 1px 5px 1px;">
+        <form name="register" method="POST" tal:attributes="action string:${here/absolute_url}/atse_registerPortalType" 
+                tal:condition="ptt">
+        <select name="ptype">
+            <tal:for repeat="ptype ptt">
+                <option tal:attributes="name ptype; value ptype" tal:content="ptype"></option>
+            </tal:for>
+        </select><br/>
+        <input type="submit" name="submit" value="Register"/>
+        </form>
+        <tal:if condition="not:ptt">
+            <i>There are no registerable portal types</i>
+        </tal:if>
+    </div>
+   </div>
+  </div>
+  </tal:do>
+</metal:div>
+
+
+<metal:div metal:define-macro="type">
+    <label i18n:translate="type">Type</label>
+      <div>
+      <select name="fielddata.type:record:string"
+              tal:attributes="onChange string:this.form.submit();;return true;;">
+        <option value="">Not selected</option>
+        <span tal:repeat="item field_types">
+          <option tal:attributes="value item;
+                                  selected python: item==field_type"
+                  tal:content="item" />
+        </span>
+      </select>
+      </div>
+</metal:div>
+            
+            
+<metal:div metal:define-macro="storage">
+  <tal:if condition="python:here.atse_hasFeature('STORAGE_SELECTION')">
+  <label i18n:translate="label_storage">Storage</label>
+
+  <div tal:define="storage_name python:context.atse_getFieldStorageName(field);">
+    <select name="fielddata.storage:record:string"
+            tal:attributes="onChange string:this.form.submit();;return true;;">
+      <option value="">Not selected</option>
+      <tal:block tal:repeat="storage_info python:context.atse_getStorageInfo()"
+                 tal:omit-tag="python:1">
+        <tal:data tal:define="storage_choice python:storage_info[1]['storage'];
+                              storage_choice_id python:storage_info[0];
+                              storage_choice_visible python:storage_info[1]['visible'];
+                              selected python:storage_name==storage_choice_id+'Storage'">
+
+          <tal:selected tal:condition="selected">
+            <tal:setselected tal:define="global selected_storage_key storage_choice_id;
+                                         global selected_storage_data python:storage_info[1]" />
+          </tal:selected>
+          <option tal:content="storage_choice_id"
+                  tal:attributes="value storage_choice_id;
+                                  selected selected"
+                  tal:condition="storage_choice_visible" />
+        </tal:data>
+      </tal:block>
+    </select>
+  </div>
+  </tal:if>
+
+  <tal:if condition="python:not here.atse_hasFeature('STORAGE_SELECTION')">
+    <input type="hidden" name="fielddata.storage:record:string" 
+           tal:attributes="value python:context.atse_getStorageInfo()[0][0]"/>
+  </tal:if>
+</metal:div>
+
+
+<metal:div metal:define-macro="widget">
+  <label i18n:translate="widget">Widget</label>
+
+  <div>
+    <select name="fielddata.widget:record:string"
+            tal:attributes="onChange string:this.form.submit();;return true;;">
+      <option value="">Not selected</option>
+      <tal:block tal:repeat="widget_info all_widget_info"
+                 tal:omit-tag="python:1">
+        <tal:data tal:define="widget_choice python:widget_info[1]['widget'];
+                              widget_choice_id python:widget_info[0];
+                              widget_choice_visible python:widget_info[1].get('visible', True);
+                              widget_choice_format widget_choice/format | nothing;
+                              widget_format python:getattr(field.widget, 'format', 0);
+                              selected python:widget_name==widget_choice.getName() and test(widget_format, widget_format==widget_choice_format, 1)">
+          <tal:selected tal:condition="selected">
+            <tal:setselected tal:define="global selected_widget_key widget_choice_id;
+                                         global selected_widget_data python:widget_info[1]" />
+          </tal:selected>
+
+          <option tal:content="widget_choice_id"
+                  tal:attributes="value widget_choice_id;
+                                  selected selected"
+                  tal:condition="widget_choice_visible" />
+        </tal:data>
+      </tal:block>
+    </select>
+  </div>
+
+</metal:div>
+
+
+<metal:div metal:define-macro="row_col_size">
+
+ <fieldset style="display:inline">
+  <legend i18n:translate="size">Size</legend>
+  <div>
+    <metal:block tal:condition="python: hasattr(widget, 'rows')">       
+      <label i18n:translate="rows">Rows</label>
+      <input type="text" size="3" name="fielddata.widgetrows:record:int" 
+             tal:attributes="value widget/rows|string:10" />
+     </metal:block>
+     <metal:block tal:condition="python: hasattr(widget, 'cols')">       
+       <br />
+       <label i18n:translate="cols">Cols</label>
+       <input type="text" size="3" name="fielddata.widgetcols:record:int" 
+              tal:attributes="value widget/cols|string:60" />
+     </metal:block>
+  </div>
+ </fieldset>
+  
+</metal:div>
+
+<metal:div metal:define-macro="image_scales">
+
+ <fieldset tal:condition="python: field.type=='image'">
+  <legend i18n:translate="scales">Scales</legend>
+  <div>
+     <div>
+      <metal:block tal:define="ms field/max_size;
+                               ms_w python:ms and ms[0];
+                               ms_h python:ms and ms[1]">
+        <label i18n:translate="label_max_size">Maximum size: width x height</label>
+        <input type="text" size="3" name="fielddata.max_size_width:record:string" 
+               tal:attributes="value ms_w" />&nbsp;x&nbsp;
+        <input type="text" size="3" name="fielddata.max_size_height:record:string" 
+               tal:attributes="value ms_h" />
+      </metal:block>
+    </div>
+    <div tal:condition="python: hasattr(field, 'sizes')">
+        <label i18n:translate="label_sizes">Sizes</label>
+        <div class="formHelp" i18n:translate="help_sizes">
+        Please enter scales to be autogenerated. Each scale on the separate line in the form 
+        SCALENAME WIDTH HEIGHT (separated by space). Invalid scales will be ignored.
+        </div>
+        <textarea name="fielddata.sizes:record:lines" rows="5" cols="60" 
+                  tal:content="python:here.atse_generateImageScaleList(field)">
+            thumb 80 80
+            big 300 300
+        </textarea>
+    </div>
+  </div>
+ </fieldset>
+    
+</metal:div>
+
+<metal:div metal:define-macro="size">
+
+    <metal:has_widget_data tal:condition="exists: selected_widget_data">
+    <metal:block tal:condition="python:selected_widget_data.has_key('size_macro')">
+      <metal:block use-macro="python:path(selected_widget_data['size_macro'])" />
+    </metal:block>
+
+    <metal:block tal:condition="not: python:selected_widget_data.has_key('size_macro')">
+      <label i18n:translate="size">Size</label>
+      <div>
+        <input type="text" size="3" name="fielddata.widgetsize:record:int" 
+               tal:attributes="value widget/size|string:60" />
+      </div>
+    </metal:block>
+    </metal:has_widget_data>
+  
+</metal:div>
+
+
+<metal:div metal:define-macro="maintenance">
+  <tal:if condition="python:here.atse_hasFeature('MANAGEMENT_UI_FUNCTIONALITY')">
+  <div class="portlet" id="maintenance" tal:condition="python: here.atse_authUserHasRole('Manager', here, True)">
+    <h5 i18n:translate="maintenance">Maintenance</h5>
+    <div class="portletBody" id="atse_maintenance">
+      <div tal:condition="python: here.atse_editorCanUpdate(SCHEMA_ID)">
+        <tal:if condition="not:here/atse_isTool">
+        <a href="#"
+           tal:attributes="href string: ${here/absolute_url}/atse_updateManagedSchema?portal_type=$SCHEMA_ID&amp;schema_template=$SCHEMA_TEMPLATE"
+           i18n:translate="update_schema_for_all_schemas" onclick="javascript:if (!confirm('Really update all associated objects? This operation cannot be undone!')) {return false;}">Update schema for all managed schemas</a><br/><br/></tal:if>
+        <a href="#" 
+           tal:attributes="href string: ${here/absolute_url}/atse_updateManagedSchema?portal_type=$SCHEMA_ID&amp;schema_template=$SCHEMA_TEMPLATE&amp;update_all=1"
+           i18n:translate="update_schema_for_really_all_schemas" onclick="javascript:if (!confirm('Really update all objects in portal (even unmanaged ones)? This operation cannot be undone!')) {return false;}">Update schema for all objects in portal (even unmanaged ones)</a>
+      </div>
+      <div tal:condition="python: not here.atse_editorCanUpdate(SCHEMA_ID)">
+       <b i18n:translate="schema_not_configured_for_update">This schema is not configured to update its associated objects</b>
+      </div>
+      <br />
+      <!-- XXX check stability and function XXX <div>
+        <a href="#" 
+           tal:attributes="href string: ${here/absolute_url}/atse_syncUnmanagedAndNewFields?schema_id=$SCHEMA_ID&amp;schema_template=$SCHEMA_TEMPLATE"
+           i18n:translate="sync_unmanaged_new_schema_fields">Sync unmanaged and missing schema fields from source</a>
+      </div>
+      <br/>-->
+      <div>
+        <a href="#" target="_blank"
+           tal:attributes="href string: ${here/absolute_url}/atse_dump_schema?schema_id=$SCHEMA_ID"
+           i18n:translate="text_dump_schema">Dump schema to Python</a>
+      </div>
+      <div tal:condition="python: here.atse_editorCanUpdate(SCHEMA_ID)">
+        <a href="#" target="_blank"
+           tal:attributes="href string: ${here/absolute_url}/atse_dumpSchemaToXML?schema_id=$SCHEMA_ID"
+           i18n:translate="text_dump_schema_to_xml">Dump schema to XML</a>
+      </div>
+      <div tal:condition="not:site_properties/atseAutomaticBackupWhenUpdateSchema">
+      <br/>
+        <a href="#"
+           tal:attributes="href string: ${here/absolute_url}/atse_dumpSchemaToBackupFile?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID"
+           i18n:translate="text_dump_schema_to_file">Save current schema to backup file</a>
+      </div>
+      <div>
+        <br/>
+        <form name="importxml" enctype="multipart/form-data" tal:attributes="action string:${here/absolute_url}/atse_doImportFileXML" method="POST">
+            <input type="hidden" name="schema_id" tal:attributes="value SCHEMA_ID"/>
+            <span i18n:translate="text_import_file_xml">Import file from filesystem (XML):</span><br/>
+            <input type="text" name="filename"/><br/><input type="button" name="go"
+                   tal:attributes="value string:Import XML for ${SCHEMA_ID}" 
+                   onclick="javascript:if (confirm('Really overwrite data?')) {document.importxml.submit();}"/>
+        </form>
+      </div>
+    </div>
+  </div>
+  </tal:if>
+</metal:div>
+
+
+<metal:div metal:define-macro="schemplates">
+  <div class="portlet" id="schemplates" tal:condition="python: True">    <!-- Schema templates -->
+    <h5 i18n:translate="schema templates">Schema Templates</h5>
+    <div class="portletBody" id="atse_schemplates">
+      <div tal:repeat="set schemplates">
+        <div class="left">
+          <a tal:attributes="href string:${context/absolute_url}/atse_deleteSchemplateById?schema_template=$SCHEMA_TEMPLATE&amp;atse_schemplate_id=${set}">
+            <img i18n:attributes="title" src="delete_icon.gif" title="Delete" width="10" height="10" /></a>
+            <a tal:content="string: ${set}" 
+                tal:attributes="href string:${here/absolute_url}/$SCHEMA_TEMPLATE?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=${set};
+             id python: test(set==schema_id, 'atse_selected', '')"/>
+        </div>
+        <div class="clear"> </div>
+      </div>
+      <div>
+          <form tal:attributes="action string:${context/absolute_url}/atse_addSchemplate" method="post">
+              <input type="hidden" name="schema_template" tal:attributes="value SCHEMA_TEMPLATE" />
+         <input type="text" style="width:75%;" name="atse_schemplate_id" value="" />
+         <input type="image" src="add_icon.gif" />
+        </form>
+      </div>
+    </div>
+  </div>
+</metal:div>
+
+<metal:div metal:define-macro="fieldsets">
+  <div class="portlet" id="schematas" >    <!-- Fieldsets -->
+    <h5 i18n:translate="schematas">Schematas</h5>
+    <div class="portletBody" id="atse_fieldsets">
+      <tal:if condition="fieldsets">  <!-- list only if there are fieldsets to show -->
+      <div tal:repeat="set fieldsets">
+        <div class="left">
+          <a tal:attributes="href string:${context/absolute_url}/atse_delSchemata?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;name=${set}">
+            <img i18n:attributes="title" src="delete_icon.gif" title="Delete" width="10" height="10" /></a>
+          <a tal:content="string: ${set}" 
+             tal:attributes="href string:${here/absolute_url}/$SCHEMA_TEMPLATE?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;schemata=${set};
+                             id python: test(set==fieldset, 'atse_selected', '')"/>
+        </div>
+        <div class="right">
+          <a tal:attributes="href string:${context/absolute_url}/atse_schemataMoveLeft?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;name=${set}">
+            <img i18n:attributes="title" src="arrowUp.gif" title="Move up" /></a> 
+          <a tal:attributes="href string:${context/absolute_url}/atse_schemataMoveRight?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;name=${set}">
+            <img i18n:attributes="title" src="arrowDown.gif" title="Move down" /></a>
+        </div>
+        <div class="clear"> </div>
+      </div>
+        </tal:if> 
+      <div>
+          <form tal:attributes="action string:${context/absolute_url}/atse_addSchemata" method="post">
+         <input type="hidden" name="schema_id" tal:attributes="value SCHEMA_ID" />
+         <input type="hidden" name="schema_template" tal:attributes="value SCHEMA_TEMPLATE" />
+         <input type="text" style="width:75%;" name="name" value="" />
+         <input type="image" src="add_icon.gif" />
+        </form>
+      </div>
+    </div>
+  </div>
+</metal:div>
+
+
+<metal:div metal:define-macro="fields">
+  <div class="portlet" id="fields" tal:condition="fieldsets">    <!-- Fields -->
+    <h5 i18n:translate="fields">Fields</h5>
+    <div class="portletBody" id="atse_fields">  
+      <div  tal:repeat="field python: [fld for fld in here.atse_getSchemata(SCHEMA_ID, fieldset).fields() if fld.atse_readAndWriteable(fld)]">
+        <div class="left">
+         <tal:if condition="python:here.atse_userCanDelete(field)">
+          <a tal:attributes="href string:${context/absolute_url}/atse_delField?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;name=${field/getName}">
+            <img i18n:attributes="title" src="delete_icon.gif" title="Delete" width="10" height="10" /></a> 
+         </tal:if>
+          <a tal:attributes="href string:${here/absolute_url}/$SCHEMA_TEMPLATE?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;schemata=${fieldset}&amp;field=${field/getName};
+                             id python: test(field.getName() == request.get('field'), 'atse_selected', '')"
+              tal:content="string: ${field/getName}" />
+        </div>
+        <div class="right">
+          <a tal:attributes="href string:${context/absolute_url}/atse_fieldMoveLeft?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;name=${field/getName}">
+            <img i18n:attributes="title" src="arrowUp.gif" title="Move up" /></a> 
+          <a tal:attributes="href string:${context/absolute_url}/atse_fieldMoveRight?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID&amp;name=${field/getName}">
+            <img i18n:attributes="title" src="arrowDown.gif" title="Move down" /></a> 
+        </div>
+        <div class="clear"> </div>
+      </div>
+
+      <div>
+          <form tal:attributes="action string:${context/absolute_url}/atse_update" method="post">
+          <input type="hidden" name="schema_id" tal:attributes="value SCHEMA_ID" />
+          <input type="hidden" name="schema_template" tal:attributes="value SCHEMA_TEMPLATE" />
+          <input type="hidden" name="fielddata.schemata:record:string"    
+               tal:attributes="value fieldset" />
+            <input type="hidden" name="add_field" value="dummy" /> 
+            <input type="text" style="width:75%;" name="name" value="" /> 
+            <input type="image" src="add_icon.gif" value="Add" />
+        </form>
+      </div>
+    </div>
+  </div>
+</metal:div>
+
+
+<metal:div define-macro="vocabulary">
+  <label for="vocabulary-def" class="label" i18n:translate="label_vocabulary">Vocabulary</label>
+  <div class="discreet" i18n:translate="help_vocabulary">
+    Use "key|value" for passing key-value pairs or 'method:&lt;methodname&gt;' or 'script:'. 
+	'methodname' must be a class method.
+	If you use 'script:', the Python script name is computed automatically and cannot be changed! 
+	Generated script name is: <strong i18n:name="scriptname" tal:content="python: here.atse_getVocabularyScriptName(SCHEMA_ID,field)">atse_script</strong>.
+	If there is python script with this name, its return value will be used as source for field vocabulary.
+  </div>
+  <div> 
+    <textarea cols="60" rows="6"
+	          id="vocabulary-def"
+              name="fielddata.vocabulary:record:lines"
+              tal:content="python: here.atse_formatVocabulary(field)"></textarea>
+  </div>
+
+  <metal:do use-macro="here/atse_macros/macros/managed_vocabulary"/>
+</metal:div>
+
+<metal:do define-macro="managed_vocabulary">
+  <tal:if condition="python:here.atse_hasFeature('VOCABULARY_MANAGER')">
+  <div class="discreet" i18n:translate="help_managed_vocabulary">
+      If you have created some managed vocabularies using the vocabulary manager then
+      you can select one of them here.
+  </div>
+  <div tal:define="vcmanager python:here.portal_vocabularies"> 
+    <select name="fielddata.managed_vocabulary:record">
+        <option value="-">-- Not selected --</option>
+        <tal:for repeat="voc vcmanager/getFolderContents">
+        <option tal:attributes="value voc/getId;
+                selected python:here.atse_isNamedVocabularySelection(voc.getId, field)"
+                tal:content="voc/Title"></option>
+        </tal:for>
+    </select>
+  </div>
+  </tal:if>
+</metal:do>
+
+<metal:div define-macro="defined_roles">
+    <!-- Needs variable given -->
+    <tal:for repeat="role here/validRoles">
+        <input type="checkbox" tal:attributes="value role;checked python:test(role in given, '1', ''); name name" />
+        <span tal:content="role"></span><br/>
+    </tal:for>
+</metal:div>
+
+<metal:div define-macro="visibility">
+<tal:if condition="python:here.atse_hasFeature('FIELD_VISIBILITY_ENABLED')">
+<fieldset id="field-visibility" style="display:none"> 
+    <legend i18n:translate="legend_field_visibility">Field visibility</legend>
+    <div class="left">
+    
+      <!-- Visibility -->
+      <div class="field">
+        <label i18n:translate="label_visible_edit">Visible (Edit)</label>
+        <div>
+          <input type="checkbox" value="visible" 
+                 name="fielddata.visible_edit:record:string"
+                 tal:attributes="checked python: here.atse_isFieldVisible(field.getName(), 'edit', SCHEMA_ID)" />
+        </div>
+      </div>
+    </div>
+    <div class="left">
+      <div class="field">
+        <label i18n:translate="label_visible_view">Visible (View)</label>
+        <div>
+          <input type="checkbox" value="visible" 
+                 name="fielddata.visible_view:record:string"
+                 tal:attributes="checked python: here.atse_isFieldVisible(field.getName(), 'view', SCHEMA_ID)" />
+        </div>
+      </div>
+
+    </div>
+</fieldset>
+</tal:if>
+</metal:div>
+
+<metal:div define-macro="security">
+<tal:if condition="python:here.atse_hasFeature('SECURITY_MANAGEMENT_ENABLED')">
+<fieldset id="rights-management" style="display:none" tal:condition="python:field.atse_userHasSpecifiedRole(getattr(field, 'atse_field_manage_right', ['Manager', ]))"> 
+    <legend>Rights management</legend>
+
+        <div class="left">
+            <div class="field">
+                <label>View permission</label>
+                <div>
+                    <select name="fielddata.view_permission:record" tal:define="readperm field/read_permission">
+                        <tal:for repeat="permission here/atse_getPossibleViewPermissions">
+                        <option tal:attributes="value permission;selected python:test(readperm==permission, 'selected', None)" tal:content="permission"></option>
+                        </tal:for>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Modify permission</label>
+                <div>
+                    <select name="fielddata.modify_permission:record" tal:define="writeperm field/write_permission">
+                        <tal:for repeat="permission here/atse_getPossibleModifyPermissions">
+                        <option tal:attributes="value permission;selected python:test(writeperm==permission, 'selected', None)" tal:content="permission"></option>
+                        </tal:for>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="left">
+
+          <!-- Roles for view and edit -->
+          <div class="field">
+            <label>View field (only given role can view field)</label>
+            <div>
+                <tal:do tal:define="name string:fielddata.view_role:record:list; given python:getattr(field, 'atse_field_view_right', 'Anonymous')">
+                    <input type="checkbox" 
+                           tal:attributes="value string:UseFieldPermission;checked python:test('UseFieldPermission' in given, '1', ''); name name" />
+                    <span>Use field view permission</span><br/>
+                    <metal:do use-macro="here/atse_macros/macros/defined_roles"/>
+                </tal:do>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Modify field (only given role can edit the field)</label>
+            <div>
+                <tal:do tal:define="name string:fielddata.modify_role:record:list; given python:getattr(field, 'atse_field_modify_right', 'Authenticated')">
+                    <input type="checkbox" 
+                           tal:attributes="value string:UseFieldPermission;checked python:test('UseFieldPermission' in given, '1', ''); name name" />
+                    <span>Use field modify permission</span><br/>
+                    <metal:do use-macro="here/atse_macros/macros/defined_roles"/>
+                </tal:do>
+            </div>
+          </div>
+         </div>
+         <div class="left">
+          <div class="field">
+            <label>Role that can delete field from this editor</label>
+            <div>
+                <tal:do tal:define="name string:fielddata.deletion_role:record:list; given python:getattr(field, 'atse_field_delete_right', 'Manager')">
+                    <metal:do use-macro="here/atse_macros/macros/defined_roles"/>
+                </tal:do>
+            </div>
+          </div>
+         
+         </div>
+         <div class="left">
+          <div class="field">
+            <label>Manage field rights (only this role can manage field rights)</label>
+            <div>
+                <tal:do tal:define="name string:fielddata.manage_role:record:list; given python:getattr(field, 'atse_field_manage_right', 'Manager')">
+                    <metal:do use-macro="here/atse_macros/macros/defined_roles"/>
+                </tal:do>
+            </div>
+          </div>
+          
+        </div>
+</fieldset>
+</tal:if>
+</metal:div>
+
+<metal:div metal:define-macro="fieldeditor">
+
+  <div class="portlet" id="atse_field_editor" tal:condition="request/field|nothing"> 
+    <h5 i18n:translate="field_definition">Field definition for <b i18n:name="field" tal:content="request/field"/></h5>
+    <div class="portletBody" id="atse_fieldeditor">
+
+&raquo;&nbsp;<a style="cursor:pointer;" tal:attributes="onClick string:var elm=document.getElementById('widget-settings');;if (elm.style.display=='none') elm.style.display='block';; else elm.style.display='none';;">Toggle widget settings</a>
+
+&raquo;&nbsp;<a style="cursor:pointer;" tal:attributes="onClick string:var elm=document.getElementById('field-visibility');;if (elm.style.display=='none') elm.style.display='block';; else elm.style.display='none';;">Toggle field visibility settings</a>
+
+&raquo;&nbsp;<a style="cursor:pointer;" tal:attributes="onClick string:var elm=document.getElementById('rights-management');;if (elm.style.display=='none') elm.style.display='block';; else elm.style.display='none';;">Toggle rights management</a>
+
+        <form tal:attributes="action string:${context/absolute_url}/atse_update" method="post"
+              enctype="multipart/form-data"
+            tal:define="field_types python:context.atse_getFieldTypes();
+                        all_field_map python:here.atse_getFieldMap();
+                        field python: here.atse_getField(SCHEMA_ID, request['field']);
+                        field_type python:context.atse_getFieldType(field);
+                        field_info python:all_field_map[field_type];
+                        all_widget_info python:context.atse_getWidgetInfo(field=field);
+                        all_widget_map python:context.atse_getWidgetMap();
+                        widget python: field.widget;
+                        widget_name python:field.getWidgetName();">
+        <input type="hidden" name="schema_id" tal:attributes="value SCHEMA_ID" />
+        <input type="hidden" name="schema_template" tal:attributes="value SCHEMA_TEMPLATE" />
+
+        <input type="hidden" name="fielddata.name:record:string" 
+               tal:attributes="value request/field|nothing" />
+        <input type="hidden" name="fielddata.schemata:record:string"    
+             tal:attributes="value fieldset" />
+        
+        <fieldset id="field-settings"> 
+           <legend i18n:translate="legend_field_settings">Field settings</legend>
+           <div class="left">
+               <div class="field">
+                 <tal:div metal:use-macro="here/atse_macros/macros/type" />         
+               </div>
+           </div>
+
+               <div class="field">
+                 <tal:div metal:use-macro="here/atse_macros/macros/widget" />         
+               </div>           
+           
+           <div class="clear"></div>
+           
+           <div class="field"
+                tal:condition="python: field_info.get('useStorage', True)">
+             <tal:div metal:use-macro="here/atse_macros/macros/storage" />         
+           </div>
+
+           <div class="field">
+              <label for="searchable" i18n:translate="label_searchable">Searchable</label>
+              <input id="searchable"
+                     type="checkbox" value="1" 
+                     name="fielddata.searchable:record:int"
+                     tal:attributes="checked field/searchable|nothing"  />
+           </div>
+
+           <metal:block tal:condition="python:field_info.has_key('post_macro')">
+              <metal:block use-macro="python:path(field_info['post_macro'])" />
+            </metal:block>
+
+        </fieldset>
+
+        <fieldset id="widget-settings" style="display:none"> 
+             <legend i18n:translate="legend_widget_settings">Widget settings</legend>
+        
+            <div tal:condition="selected_widget_data/useVocab | nothing">
+                <metal:block use-macro="here/atse_macros/macros/vocabulary" />
+            </div>
+    
+            <div class="field">
+              <label i18n:translate="label_label">Label</label>
+              <div>
+                <input type="text" 
+                       value="" 
+                       style="width:96%" 
+                       name="fielddata.label:record:string" 
+                       tal:attributes="value python: field.widget.label" />
+              </div>
+            </div>
+    
+            <div class="field">
+              <label i18n:translate="label_description">Description</label>
+              <div>
+                <textarea type="text" 
+                       value="" 
+                       rows="2"
+                       style="width:96%" 
+                       name="fielddata.description:record:string"
+                       tal:content="python: getattr(field.widget, 'description', '')">
+                </textarea>
+              </div>
+            </div>
+    
+            <div class="left">
+            <div class="field">
+              <label i18n:translate="label_default">Default</label>
+              <div>
+                <input type="text" 
+                       value="" 
+                       style="width:96%" 
+                       name="fielddata.default:record:string"
+                       tal:attributes="value python: here.atse_field_default(field)" />
+              </div>
+            </div>
+            </div>
+    
+            <div class="field">
+               <tal:div metal:use-macro="here/atse_macros/macros/size" />         
+            </div>
+    
+            <br />
+    
+            <div class="field">
+              <label i18n:translate="label_validators">Validators</label>
+              <div>
+                <select multiple="multiple" name="fielddata.validators:record:list" size="5">
+                    <tal:for repeat="opt here/atse_getRegisteredValidatorNames">
+                        <option tal:attributes="value opt;
+                                                selected python:here.atse_isRegisteredValidatorName(opt, field) and 'selected' or None" 
+                                tal:content="opt"/>
+                    </tal:for>
+                </select>
+              </div>
+              <tal:if condition="python:here.atse_hasFeature('PARAMETRIZED_VALIDATOR_SUPPORT')">
+              <br/>
+              <label i18n:translate="label_validator_parameters">Validator parameter(s)</label>
+              <div class="discreet" i18n:translate="help_validator_paremeters">
+                  Here you can input a list of parameters for the given
+                  validator. The concrete list of parameters are defined by the validators
+                  constructor method. One parameter name per line prefixed with the validator name! <br/>
+                  Example (for a defined RangeValidator):<br/>
+                  <pre>inNumericRange:minval=1.3
+inNumericRange:maxval=2.5</pre>
+                  Example (for the matchRegularExpression validator):<br/>
+                  <pre>matchRegularExpression:regexp=[a-zA-Z0-9\s]+$</pre>
+              </div>
+              <textarea name="fielddata.validator_params:record:string" rows="5"
+                        tal:content="python:'\n'.join(getattr(field, 'validator_params', []))"></textarea>
+              </tal:if>
+            </div>
+
+            <tal:referencefield condition="python: field.getType().split('.')[-1] == 'ReferenceField'"> 
+            <div class="field">
+              <label i18n:translate="label_relationship">Relationship</label>
+              <div>
+                <input type="text" value=""  
+                       name="fielddata.relationship:record:string"
+                       tal:attributes="value python: field.relationship" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label i18n:translate="label_allowed_types">Allowed Types</label>
+              <div>
+                <input type="text" 
+                       value="" 
+                       name="fielddata.allowed_types:record:string" 
+                       tal:attributes="value python: ','.join(field.allowed_types)" />
+              </div>
+            </div>
+
+             <div class="field">
+              <label i18n:translate="label_vocabpathbound">Vocabulary display path bound</label>
+              <div>
+                <input type="text" value=""  
+                       name="fielddata.vocabulary_display_path_bound:record:int"
+                       tal:attributes="value python: field.vocabulary_display_path_bound" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label i18n:translate="label_checkboxbound">Checkbox bound</label>
+              <div>
+                <input type="text" value=""  
+                       name="fielddata.checkbox_bound:record:int"
+                       tal:attributes="value python: getattr(field.widget, 'checkbox_bound', default)" />
+              </div>
+            </div>
+
+            </tal:referencefield>
+
+            <div class="field" tal:condition="python: field.widget.getName() == 'ReferenceBrowserWidget'">
+              <label i18n:translate="label_startupdirectory">Startup directory</label>
+              <div>
+                <input type="text" value=""  
+                       name="fielddata.startup_directory:record:string"
+                       tal:attributes="value python: getattr(field.widget, 'startup_directory', '')" />
+              </div>
+            </div>
+                
+
+            <div condition="python: field.getType().split('.')[-1] == 'ReferenceField'">
+              <div class="left">
+              <div class="field">
+                <label i18n:translate="label_multivalued">Multivalued</label>
+                <div>
+                  <input type="checkbox" value="1" 
+                         name="fielddata.multiValued:record:int"
+                         tal:attributes="checked python: field.multiValued" />
+                </div>
+              </div>
+	      </div>
+            </div>
+
+            <div>
+    
+              <div class="left">
+              <div class="field">
+                <label i18n:translate="label_required">Required</label>
+                <div>
+                  <input type="checkbox" value="1" 
+                         name="fielddata.required:record:int"
+                         tal:attributes="checked field/required" />
+                </div>
+              </div>
+              </div>
+            
+              
+            </div>
+
+           <metal:has_widget_data tal:condition="exists: selected_widget_data">
+           <metal:block tal:condition="python:selected_widget_data.has_key('post_macro')">
+              <metal:block use-macro="python:path(selected_widget_data['post_macro'])" />
+            </metal:block>
+            </metal:has_widget_data>
+     
+        </fieldset>
+
+        <metal:do use-macro="here/atse_macros/macros/visibility"/>
+        <metal:do use-macro="here/atse_macros/macros/security"/>
+     
+       <metal:block tal:define="editor_post_macro here/atse_getPostMacro"
+                    tal:condition="editor_post_macro">
+          <metal:block use-macro="python:path(editor_post_macro)" />
+        </metal:block>
+
+       <tal:block condition="exists: selected_storage_data">
+         <metal:block tal:condition="python:selected_storage_data.has_key('post_macro')">
+           <metal:block use-macro="python:path(selected_storage_data['post_macro'])" />
+         </metal:block>
+       </tal:block>
+
+        <div> 
+          <div class="formControls">
+            <input type="submit" value="Save changes" class="context" i18n:attributes="value" />
+          </div> 
+        </div>
+
+      </form>
+    </div>
+  </div>
+</metal:div>
+
+</body>
+</html>

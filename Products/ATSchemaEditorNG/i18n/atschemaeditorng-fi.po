@@ -1,0 +1,554 @@
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: ATSchemaEditorNG\n"
+"POT-Creation-Date: 2007-03-21 12:24+0000\n"
+"PO-Revision-Date: 2007-03-18 12:34+0200\n"
+"Last-Translator: Petri Savolainen <petri.savolainen@iki.fi>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Code: fi\n"
+"Language-Name: Suomeksi\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: ATSchemaEditorNG\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: FINLAND\n"
+
+#. <img height="10" i18n:attributes="title" src="delete_icon.gif" title="Delete" width="10"/>
+#. Default: "Delete"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Delete"
+msgstr "Poista"
+
+#. <img i18n:attributes="title" src="arrowDown.gif" title="Move down"/>
+#. Default: "Move down"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Move down"
+msgstr "Siirrä alemmas"
+
+#. <img i18n:attributes="title" src="arrowUp.gif" title="Move up"/>
+#. Default: "Move up"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Move up"
+msgstr "Siirrä ylemmäs"
+
+#. <input i18n:attributes="value" name="refresh" onclick="this.form.submit();return true;" type="button" value="Refresh"/>
+#. Default: "Refresh"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "Refresh"
+msgstr ""
+
+#. <input class="context" i18n:attributes="value" type="submit" value="Save changes"/>
+#. Default: "Save changes"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Save changes"
+msgstr "Tallenna muutokset"
+
+#. Default: "Schemata added"
+msgid "atse_added"
+msgstr "Alirakenne lisätty."
+
+#. Default: "Can not remove the last schema"
+msgid "atse_can_not_remove_last_schema"
+msgstr "Viimeistä tietorakennetta ei ole mahdollista poistaa."
+
+#. Default: "Can not remove this schema because it is protected from deletion"
+msgid "atse_can_not_remove_schema"
+msgstr "Tietorakenteen poistaminen on estetty."
+
+#. Default: "Schemata deleted"
+msgid "atse_deleted"
+msgstr "Alirakenne poistettu."
+
+#. Default: "Now editing schema for ${portal_type}"
+msgid "atse_editing_schema_for_type"
+msgstr "Tyypin ${portal_type} tietorakenne on nyt muokattavissa."
+
+#. Default: "Field name is empty"
+msgid "atse_empty_field_name"
+msgstr "Kentälle ei ole annettu nimeä."
+
+#. Default: "Empty ID given"
+msgid "atse_empty_name"
+msgstr "Tyhjä tunniste ei kelpaa."
+
+#. Default: "Schemata \"$schemata\" already exists"
+msgid "atse_exists"
+msgstr "Alirakenne \"$schemata\" on jo olemassa."
+
+#. Default: "Field added"
+msgid "atse_field_added"
+msgstr "Kenttä lisätty."
+
+#. Default: "\"$id\" already exists"
+msgid "atse_field_already_exists"
+msgstr "Kenttä \"$id\" on jo entuudestaan olemassa."
+
+#. Default: "Field changed"
+msgid "atse_field_changed"
+msgstr "Kenttä muutettu."
+
+#. Default: "Field deleted"
+msgid "atse_field_deleted"
+msgstr "Kenttä poistettu."
+
+#. Default: "Field moved to other fieldset"
+msgid "atse_field_moved"
+msgstr "Kenttä siirretty alirakenteen osaksi."
+
+#. Default: "Field moved down"
+msgid "atse_field_moved_down"
+msgstr "Kenttä siirretty alaspäin."
+
+#. Default: "Field moved up"
+msgid "atse_field_moved_up"
+msgstr "Kenttä siirretty ylöspäin."
+
+#. Default: "field \"$name\" can not be deleted because it is protected from deletion"
+msgid "atse_field_not_deleteable"
+msgstr "Kenttä \"$name\" on suojattu poistoa vastaan."
+
+#. Default: "Unmanaged and missing fields have been synchronized"
+msgid "atse_fields_synced"
+msgstr "Tuntemattomat ja puuttuvat kentät on tahdistettu."
+
+#. Default: "\"$schemata\" is an invalid ID for a schemata"
+msgid "atse_invalid_id_for_schemata"
+msgstr "\"$schemata\" ei kelpaa alirakenteen tunnisteeksi."
+
+#. Default: "Schemata moved to left"
+msgid "atse_moved_left"
+msgstr "Alirakenne siirretty vasemmalle."
+
+#. Default: "Schemata moved to right"
+msgid "atse_moved_right"
+msgstr "Alirakenne siirretty oikealle."
+
+#. Default: "\"$id\" is not a valid ID"
+msgid "atse_not_a_valid_id"
+msgstr "\"$id\" ei kelpaa tunnisteeksi."
+
+#. Default: "Objects of type ${portal_type} updated successfully"
+msgid "atse_objects_updated"
+msgstr "Tyypin ${portal_type} rakenne päivitetty."
+
+#. Default: "The schemata contains fields that can not be deleted"
+msgid "atse_schemata_contains_undeleteable_fields"
+msgstr "Alirakenne sisältää kenttiä joita ei voida poistaa."
+
+#. Default: "unknown field type: $field"
+msgid "atse_unknown_field"
+msgstr "Kentän $field tyyppiä ei voitu tunnistaa."
+
+#. Default: "Can not determine portal_type of managed objects (${portal_type})..."
+msgid "atse_unknown_portal_type"
+msgstr "Tyyppiä (${portal_type}) ei voitu tunnistaa."
+
+#. Default: "unknown widget type: $widget"
+msgid "atse_unknown_widget"
+msgstr "Tuntematon käyttöliittymäelementti: $widget"
+
+#. <label i18n:translate="cols">
+#. Cols
+#. </label>
+#. Default: "Cols"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "cols"
+msgstr "Sarakkeita"
+
+#. <h5 i18n:translate="field_definition">
+#. Field definition for
+#. ${field}
+#. </h5>
+#. Default: "Field definition for ${field}"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "field_definition"
+msgstr "Kentän ${field} määrittely"
+
+#. <h5 i18n:translate="fields">
+#. Fields
+#. </h5>
+#. Default: "Fields"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "fields"
+msgstr "Kentät"
+
+#. <h1 i18n:translate="heading_schema_editor">
+#. Schema Editor
+#. </h1>
+#. Default: "Schema Editor"
+#: ../skins/atse_templates/atse_editor.pt
+msgid "heading_schema_editor"
+msgstr ""
+
+#. <div class="formHelp" i18n:translate="help_dg_parameters">
+#. Please enter DataGrid columns definition. There are two supported formats.
+#. The first one contains only id|title pairs for the particular column,
+#. the second one contains id|title|vocabulary_method definition. &quot;vocabulary_method&quot; has to
+#. be a method defined in the class instance or &quot;Script (Python)&quot; defined in the
+#. skin layer (for example in portal_skin/custom folder). Vocabulary method/script
+#. must return DisplayList instance. The two described line formats may be mixed.
+#. Invalid definitions will be silently ignored.
+#. </div>
+#. Default: "Please enter DataGrid columns definition. There are two supported formats. The first one contains only id|title pairs for the particular column, the second one contains id|title|vocabulary_method definition. \"vocabulary_method\" has to be a method defined in the class instance or \"Script (Python)\" defined in the skin layer (for example in portal_skin/custom folder). Vocabulary method/script must return DisplayList instance. The two described line formats may be mixed. Invalid definitions will be silently ignored."
+#: ../skins/atse_templates/datagridfield_macros.pt
+msgid "help_dg_parameters"
+msgstr ""
+
+#. <div class="formHelp" i18n:translate="help_sizes">
+#. Please enter scales to be autogenerated. Each scale on the separate line in the form
+#. SCALENAME WIDTH HEIGHT (separated by space). Invalid scales will be ignored.
+#. </div>
+#. Default: "Please enter scales to be autogenerated. Each scale on the separate line in the form SCALENAME WIDTH HEIGHT (separated by space). Invalid scales will be ignored."
+#: ../skins/atse_templates/atse_macros.pt
+msgid "help_sizes"
+msgstr "Kuvista automaattisesti tuotettavat skaalaukset määritellään kukin omalla rivillään muodossa NIMI LEVEYS KORKEUS (siis välilyönnein erotettuna). Väärin määriteltyjä rivejä ei huomioida."
+
+#. Default: "Use \"key|value\" for passing key-value pairs or 'method:&lt;methodname&gt;' or 'script:'. 'methodname' must be a class method. If you use 'script:', the Python script name is computed automatically and cannot be changed! Generated script name is: ${scriptname}. If there is python script with this name, its return value will be used as source for field vocabulary."
+#: ../skins/atse_templates/atse_macros.pt
+msgid "help_vocabulary"
+msgstr ""
+
+#. <label i18n:translate="label_allowed_types">
+#. Allowed Types
+#. </label>
+#. Default: "Allowed Types"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_allowed_types"
+msgstr ""
+
+#. <label i18n:translate="label_checkboxbound">
+#. Checkbox bound
+#. </label>
+#. Default: "Checkbox bound"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_checkboxbound"
+msgstr ""
+
+#. <label i18n:translate="label_default">
+#. Default
+#. </label>
+#. Default: "Default"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_default"
+msgstr "Oletusarvo"
+
+#. <label i18n:translate="label_description">
+#. Description
+#. </label>
+#. Default: "Description"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_description"
+msgstr "Kuvaus"
+
+#. <label i18n:translate="label_dg_columns">
+#. Columns definition
+#. </label>
+#. Default: "Columns definition"
+#: ../skins/atse_templates/datagridfield_macros.pt
+msgid "label_dg_columns"
+msgstr ""
+
+#. <label i18n:translate="label_expression">
+#. Expression
+#. </label>
+#. Default: "Expression"
+#: ../skins/atse_templates/computedfield_postmacro.pt
+msgid "label_expression"
+msgstr "Lauseke"
+
+#. <label i18n:translate="label_label">
+#. Label
+#. </label>
+#. Default: "Label"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_label"
+msgstr "Nimike"
+
+#. <label i18n:translate="label_max_size">
+#. Maximum size: width x height
+#. </label>
+#. Default: "Maximum size: width x height"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_max_size"
+msgstr "Suurin koko: leveys x korkeus"
+
+#. <label i18n:translate="label_multivalued">
+#. Multivalued
+#. </label>
+#. Default: "Multivalued"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_multivalued"
+msgstr "Monivalintainen"
+
+#. <label i18n:translate="label_relationship">
+#. Relationship
+#. </label>
+#. Default: "Relationship"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_relationship"
+msgstr "Viittaus"
+
+#. <label i18n:translate="label_required">
+#. Required
+#. </label>
+#. Default: "Required"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_required"
+msgstr "Pakollinen"
+
+#. <label for="searchable" i18n:translate="label_searchable">
+#. Searchable
+#. </label>
+#. Default: "Searchable"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_searchable"
+msgstr "Haettavissa"
+
+#. <label i18n:translate="label_sizes">
+#. Sizes
+#. </label>
+#. Default: "Sizes"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_sizes"
+msgstr "Koot"
+
+#. <label i18n:translate="label_startupdirectory">
+#. Startup directory
+#. </label>
+#. Default: "Startup directory"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_startupdirectory"
+msgstr ""
+
+#. <label i18n:translate="label_storage">
+#. Storage
+#. </label>
+#. Default: "Storage"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_storage"
+msgstr "Tallennustapa"
+
+#. <label i18n:translate="label_textfield_allowable_ct">
+#. Allowable content types
+#. </label>
+#. Default: "Allowable content types"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_allowable_ct"
+msgstr ""
+
+#. <label i18n:translate="label_textfield_default_ct">
+#. Default content type
+#. </label>
+#. Default: "Default content type"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_default_ct"
+msgstr ""
+
+#. <label i18n:translate="label_textfield_default_outtype">
+#. Default output type
+#. </label>
+#. Default: "Default output type"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_default_outtype"
+msgstr ""
+
+#. <label i18n:translate="label_validators">
+#. Validators
+#. </label>
+#. Default: "Validators"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_validators"
+msgstr "Tarkistimet"
+
+#. <label i18n:translate="label_visible_edit">
+#. Visible (Edit)
+#. </label>
+#. Default: "Visible (Edit)"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_visible_edit"
+msgstr "Näkyy muokkaustilassa"
+
+#. <label i18n:translate="label_visible_view">
+#. Visible (View)
+#. </label>
+#. Default: "Visible (View)"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_visible_view"
+msgstr "Näkyy tarkastelutilassa"
+
+#. <label i18n:translate="label_vocabpathbound">
+#. Vocabulary display path bound
+#. </label>
+#. Default: "Vocabulary display path bound"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_vocabpathbound"
+msgstr ""
+
+#. Default: "Vocabulary"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_vocabulary"
+msgstr ""
+
+#. <legend i18n:translate="legend_field_settings">
+#. Field settings
+#. </legend>
+#. Default: "Field settings"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_field_settings"
+msgstr "Kentän asetukset"
+
+#. <legend i18n:translate="legend_field_visibility">
+#. Field visibility
+#. </legend>
+#. Default: "Field visibility"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_field_visibility"
+msgstr "Kentän näkyvyys"
+
+#. <legend i18n:translate="legend_widget_settings">
+#. Widget settings
+#. </legend>
+#. Default: "Widget settings"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_widget_settings"
+msgstr "Ulkoasuelementin asetukset"
+
+#. <h5 i18n:translate="maintenance">
+#. Maintenance
+#. </h5>
+#. Default: "Maintenance"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "maintenance"
+msgstr "Hallinta"
+
+#. Default: "Register Objects"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "register_selection"
+msgstr ""
+
+#. <label i18n:translate="rows">
+#. Rows
+#. </label>
+#. Default: "Rows"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "rows"
+msgstr "Rivit"
+
+#. <legend i18n:translate="scales">
+#. Scales
+#. </legend>
+#. Default: "Scales"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "scales"
+msgstr "Skaalaukset"
+
+#. <b i18n:translate="schema_not_configured_for_update">
+#. This schema is not configured to update its associated objects
+#. </b>
+#. Default: "This schema is not configured to update its associated objects"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "schema_not_configured_for_update"
+msgstr "Tätä tietorakennetta ei ole määritelty päivittämään sitä käyttäviä olioita."
+
+#. <h5 i18n:translate="schematas">
+#. Schematas
+#. </h5>
+#. Default: "Schematas"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "schematas"
+msgstr "Alirakenteet"
+
+#. <input class="standalone" i18n:attributes="value" name="submit" type="submit" value="select"/>
+#. Default: "select"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "select"
+msgstr "Valitse"
+
+#. <h5 i18n:translate="selection">
+#. Registered Objects
+#. </h5>
+#. Register Objects
+#. Default: "Registered Objects"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "selection"
+msgstr "Rekisteröidyt tyypit"
+
+#. <legend i18n:translate="size">
+#. Size
+#. </legend>
+#. <label i18n:translate="size">
+#. </label>
+#. Default: "Size"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "size"
+msgstr "Koko"
+
+#. <a href="#" i18n:translate="text_dump_schema" tal:attributes="href string: ${here/absolute_url}/atse_dump_schema?schema_id=$SCHEMA_ID" target="_blank">
+#. Dump schema to Python
+#. </a>
+#. Default: "Dump schema to Python"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema"
+msgstr "Vie datarakenne Python-ohjelmakoodiksi"
+
+#. <a href="#" i18n:translate="text_dump_schema_to_file" tal:attributes="href string: ${here/absolute_url}/atse_dumpSchemaToBackupFile?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID">
+#. Save current schema to backup file
+#. </a>
+#. Default: "Save current schema to backup file"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema_to_file"
+msgstr "Varmuuskopioi tietorakenne tiedostoon"
+
+#. <a href="#" i18n:translate="text_dump_schema_to_xml" tal:attributes="href string: ${here/absolute_url}/atse_dumpSchemaToXML?schema_id=$SCHEMA_ID" target="_blank">
+#. Dump schema to XML
+#. </a>
+#. Default: "Dump schema to XML"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema_to_xml"
+msgstr ""
+
+#. <span i18n:translate="text_import_file_xml">
+#. Import file from filesystem (XML):
+#. </span>
+#. Default: "Import file from filesystem (XML):"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_import_file_xml"
+msgstr "Tuo tietorakenne XML-tiedostosta"
+
+#. <label i18n:translate="type">
+#. Type
+#. </label>
+#. Default: "Type"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "type"
+msgstr "Tyyppi"
+
+#. <a href="#" i18n:translate="update_schema_for_all_schemas" onclick="javascript:if (!confirm('Really update all associated objects? This operation cannot be undone!')) {return false;}" tal:attributes="href string: ${here/absolute_url}/atse_updateManagedSchema?portal_type=$SCHEMA_ID&amp;schema_template=$SCHEMA_TEMPLATE">
+#. Update schema for all managed schemas
+#. </a>
+#. Default: "Update schema for all managed schemas"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "update_schema_for_all_schemas"
+msgstr "Ota kaikki tietorakennemuutokset käyttöön"
+
+#. <a href="#" i18n:translate="update_schema_for_really_all_schemas" onclick="javascript:if (!confirm('Really update all objects in portal (even unmanaged ones)? This operation cannot be undone!')) {return false;}" tal:attributes="href string: ${here/absolute_url}/atse_updateManagedSchema?portal_type=$SCHEMA_ID&amp;schema_template=$SCHEMA_TEMPLATE&amp;update_all=1">
+#. Update schema for all objects in portal (even unmanaged ones)
+#. </a>
+#. Default: "Update schema for all objects in portal (even unmanaged ones)"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "update_schema_for_really_all_schemas"
+msgstr ""
+
+#. <label i18n:translate="widget">
+#. Widget
+#. </label>
+#. Default: "Widget"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "widget"
+msgstr "Ulkoasuelementti"
+

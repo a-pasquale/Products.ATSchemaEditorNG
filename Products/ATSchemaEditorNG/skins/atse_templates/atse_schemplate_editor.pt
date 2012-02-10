@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      lang="en-US"
+      i18n:domain="ATSchemaEditorNG">
+
+<head></head>
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+
+  <body>
+
+    <metal:block metal:fill-slot="head_slot">
+      <link rel="Stylesheet" type="text/css" tal:attributes="href string:$portal_url/atse_styles.css" />
+    </metal:block>
+    pupu
+    <div metal:fill-slot="prefs_configlet_main"
+        tal:define="SCHEMA_ID request/schema_id|here/atse_getDefaultSchemaId;
+                    SCHEMA_TEMPLATE string:atse_schemplate_editor" >
+
+    <h1 i18n:translate="heading_schema_editor">ATSE Template Editor</h1>
+
+        <div metal:use-macro="here/atse_main_macro/macros/schemplate_editor" />
+
+    </div>
+  </body>
+</html>

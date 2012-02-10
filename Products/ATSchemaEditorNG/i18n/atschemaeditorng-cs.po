@@ -1,0 +1,552 @@
+# translation of atschemaeditorng-cs.po to Czech
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# Radim Novotny <r.novotny@elektrika.cz>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: atschemaeditorng-cs\n"
+"POT-Creation-Date: 2007-03-21 12:24+0000\n"
+"PO-Revision-Date: 2007-02-11 11:30+0100\n"
+"Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
+"Language-Team: Czech <info@surecase.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: cs\n"
+"Language-Name: Czech\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: ATSchemaEditorNG\n"
+"X-Generator: KBabel 1.10.2\n"
+
+#. Default: "Delete"
+#. <img height="10" i18n:attributes="title" src="delete_icon.gif" title="Delete" width="10"/>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Delete"
+msgstr "Smazat"
+
+#. Default: "Move down"
+#. <img i18n:attributes="title" src="arrowDown.gif" title="Move down"/>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Move down"
+msgstr "Posunout dolů"
+
+#. Default: "Move up"
+#. <img i18n:attributes="title" src="arrowUp.gif" title="Move up"/>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Move up"
+msgstr "Posunout nahoru"
+
+#. Default: "Refresh"
+#. <input i18n:attributes="value" name="refresh" onclick="this.form.submit();return true;" type="button" value="Refresh"/>
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "Refresh"
+msgstr "Obnovit"
+
+#. Default: "Save changes"
+#. <input class="context" i18n:attributes="value" type="submit" value="Save changes"/>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Save changes"
+msgstr "Uložit"
+
+#. Default: "Schemata added"
+msgid "atse_added"
+msgstr "Skupina byla přidána."
+
+#. Default: "Can not remove the last schema"
+msgid "atse_can_not_remove_last_schema"
+msgstr "Nelze vymazat poslední skupinu."
+
+#. Default: "Can not remove this schema because it is protected from deletion"
+msgid "atse_can_not_remove_schema"
+msgstr "Nelze smazat tuto skupinu, protože je její smazání zakázáno."
+
+#. Default: "Schemata deleted"
+msgid "atse_deleted"
+msgstr "Skupina byla smazána."
+
+#. Default: "Now editing schema for ${portal_type}"
+msgid "atse_editing_schema_for_type"
+msgstr "Budou prováděny změny v typu ${portal_type}"
+
+#. Default: "Field name is empty"
+msgid "atse_empty_field_name"
+msgstr "Název pole nebyl zadán."
+
+#. Default: "Empty ID given"
+msgid "atse_empty_name"
+msgstr "Nebylo zadáno ID."
+
+#. Default: "Schemata \"$schemata\" already exists"
+msgid "atse_exists"
+msgstr "Skupina \"$schemata\" již existuje."
+
+#. Default: "Field added"
+msgid "atse_field_added"
+msgstr "Pole bylo přidáno."
+
+#. Default: "\"$id\" already exists"
+msgid "atse_field_already_exists"
+msgstr "\"$id\" již existuje."
+
+#. Default: "Field changed"
+msgid "atse_field_changed"
+msgstr "Pole bylo změněno."
+
+#. Default: "Field deleted"
+msgid "atse_field_deleted"
+msgstr "Pole bylo smazáno."
+
+#. Default: "Field moved to other fieldset"
+msgid "atse_field_moved"
+msgstr "Pole bylo přesunuto."
+
+#. Default: "Field moved down"
+msgid "atse_field_moved_down"
+msgstr "Pole bylo přesunuto dolů."
+
+#. Default: "Field moved up"
+msgid "atse_field_moved_up"
+msgstr "Pole bylo přesunuto nahoru."
+
+#. Default: "field \"$name\" can not be deleted because it is protected from deletion"
+msgid "atse_field_not_deleteable"
+msgstr "Nelze smazat pole \"$name\", protože je jeho smazání zakázáno."
+
+#. Default: "Unmanaged and missing fields have been synchronized"
+msgid "atse_fields_synced"
+msgstr "Seznam polí byl synchronizován."
+
+#. Default: "\"$schemata\" is an invalid ID for a schemata"
+msgid "atse_invalid_id_for_schemata"
+msgstr "\"$schemata\" je neplatný název pro skupinu."
+
+#. Default: "Schemata moved to left"
+msgid "atse_moved_left"
+msgstr "Skupina byl posunuta vlevo."
+
+#. Default: "Schemata moved to right"
+msgid "atse_moved_right"
+msgstr "Skupina byl posunuta vpravo."
+
+#. Default: "\"$id\" is not a valid ID"
+msgid "atse_not_a_valid_id"
+msgstr "\"$id\" není platné ID"
+
+#. Default: "Objects of type ${portal_type} updated successfully"
+msgid "atse_objects_updated"
+msgstr "Objekty typu ${portal_type} byly úspěšně aktualizovány."
+
+#. Default: "The schemata contains fields that can not be deleted"
+msgid "atse_schemata_contains_undeleteable_fields"
+msgstr "Skupina obsahuje pole, která nelze smazat."
+
+#. Default: "unknown field type: $field"
+msgid "atse_unknown_field"
+msgstr "neznámý typ pole: $field"
+
+#. Default: "Can not determine portal_type of managed objects (${portal_type})..."
+msgid "atse_unknown_portal_type"
+msgstr "Nelze zjistit typ objektu zpracovávaných objektů (${portal_type})..."
+
+#. Default: "unknown widget type: $widget"
+msgid "atse_unknown_widget"
+msgstr "neznámý typ widgetu: $widget"
+
+#. Default: "Cols"
+#. <label i18n:translate="cols">
+#. Cols
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "cols"
+msgstr "Sloupce"
+
+#. Default: "Field definition for ${field}"
+#. <h5 i18n:translate="field_definition">
+#. Field definition for
+#. ${field}
+#. </h5>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "field_definition"
+msgstr "Definice pro pole ${field}"
+
+#. Default: "Fields"
+#. <h5 i18n:translate="fields">
+#. Fields
+#. </h5>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "fields"
+msgstr "Pole"
+
+#. Default: "Schema Editor"
+#. <h1 i18n:translate="heading_schema_editor">
+#. Schema Editor
+#. </h1>
+#: ../skins/atse_templates/atse_editor.pt
+msgid "heading_schema_editor"
+msgstr "Schema Editor"
+
+#. Default: "Please enter DataGrid columns definition. There are two supported formats. The first one contains only id|title pairs for the particular column, the second one contains id|title|vocabulary_method definition. \"vocabulary_method\" has to be a method defined in the class instance or \"Script (Python)\" defined in the skin layer (for example in portal_skin/custom folder). Vocabulary method/script must return DisplayList instance. The two described line formats may be mixed. Invalid definitions will be silently ignored."
+#. <div class="formHelp" i18n:translate="help_dg_parameters">
+#. Please enter DataGrid columns definition. There are two supported formats.
+#. The first one contains only id|title pairs for the particular column,
+#. the second one contains id|title|vocabulary_method definition. &quot;vocabulary_method&quot; has to
+#. be a method defined in the class instance or &quot;Script (Python)&quot; defined in the
+#. skin layer (for example in portal_skin/custom folder). Vocabulary method/script
+#. must return DisplayList instance. The two described line formats may be mixed.
+#. Invalid definitions will be silently ignored.
+#. </div>
+#: ../skins/atse_templates/datagridfield_macros.pt
+msgid "help_dg_parameters"
+msgstr "Zadejte definici sloupců pro pole typu DataGrid. Toto pole se používá v případě, kdy není předem jasné, kolik položek (řádků) bude obsahovat. Zde prosím zadejte na každý řadek definici jednoho sloupce tabulky ve tvaru:id|nadpis nebo id|nadpis|Id_skriptu_slovnikuSlovík (id_skriptu_slovníku) musí být funkce, která je definována v příslušné třídě nebo to musí být objekt typu \"Script (Python)\" v portal_skins/custom. Tento skript musí vracet DisplayList. Příklad naleznete v souboru ATSchemaEditorNG/doc/DATAGRID.txt"
+
+#. Default: "Please enter scales to be autogenerated. Each scale on the separate line in the form SCALENAME WIDTH HEIGHT (separated by space). Invalid scales will be ignored."
+#. <div class="formHelp" i18n:translate="help_sizes">
+#. Please enter scales to be autogenerated. Each scale on the separate line in the form
+#. SCALENAME WIDTH HEIGHT (separated by space). Invalid scales will be ignored.
+#. </div>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "help_sizes"
+msgstr "Zadejte prosím seznam velikostí obrázku, které budou automaticky vygenerovány po nahrání obrázku. Každá velikost musí být ba samostatném řádku a ve formátu NÁZEV ŠÍŘKA VÝŠKA (položky oddělené mezerou). V názvu nepoužívejte prosím diakritiku. Neplatné řádky budou ignorovány."
+
+#. Default: "Use \"key|value\" for passing key-value pairs or 'method:&lt;methodname&gt;' or 'script:'. 'methodname' must be a class method. If you use 'script:', the Python script name is computed automatically and cannot be changed! Generated script name is: ${scriptname}. If there is python script with this name, its return value will be used as source for field vocabulary."
+#: ../skins/atse_templates/atse_macros.pt
+#, fuzzy
+msgid "help_vocabulary"
+msgstr "V tomto poli definujete slovník hodnot pro toto pole. Můžete použít buď několik řádků \"klíč|hodnota\" nebo 'method:&lt;methodname&gt;' nebo 'script:'. 'methodname' musí být existující metoda třídy. Pokud použijete 'script:', bude použit python skript, jehož název je generován automaticky a nelze jej změnit. Název skriptu je ${scriptname}. Pokud se podaří najít python skript s tímto názvem, bude jeho návratová hodnota použita jako zdroj hodnot pro slovník tohoto pole."
+
+#. Default: "Allowed Types"
+#. <label i18n:translate="label_allowed_types">
+#. Allowed Types
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_allowed_types"
+msgstr "Povolené typy"
+
+#. Default: "Checkbox bound"
+#. <label i18n:translate="label_checkboxbound">
+#. Checkbox bound
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_checkboxbound"
+msgstr "Hranice zaškrtávacích polí"
+
+#. Default: "Default"
+#. <label i18n:translate="label_default">
+#. Default
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_default"
+msgstr "Výchozí"
+
+#. Default: "Description"
+#. <label i18n:translate="label_description">
+#. Description
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_description"
+msgstr "Popis"
+
+#. Default: "Columns definition"
+#. <label i18n:translate="label_dg_columns">
+#. Columns definition
+#. </label>
+#: ../skins/atse_templates/datagridfield_macros.pt
+msgid "label_dg_columns"
+msgstr "Definice sloupců"
+
+#. Default: "Expression"
+#. <label i18n:translate="label_expression">
+#. Expression
+#. </label>
+#: ../skins/atse_templates/computedfield_postmacro.pt
+msgid "label_expression"
+msgstr "Výraz"
+
+#. Default: "Label"
+#. <label i18n:translate="label_label">
+#. Label
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_label"
+msgstr "Nadpis"
+
+#. Default: "Maximum size: width x height"
+#. <label i18n:translate="label_max_size">
+#. Maximum size: width x height
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_max_size"
+msgstr "Maximální velikost (šířka x výška). Obrázky větší než zde zadaná velikost budou automaticky na tuto velikost zmenšeny (v poměru stran)."
+
+#. Default: "Multivalued"
+#. <label i18n:translate="label_multivalued">
+#. Multivalued
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_multivalued"
+msgstr "Může obsahovat více hodnot (multivalued)?"
+
+#. Default: "Relationship"
+#. <label i18n:translate="label_relationship">
+#. Relationship
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_relationship"
+msgstr "Propojení (relationship)"
+
+#. Default: "Required"
+#. <label i18n:translate="label_required">
+#. Required
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_required"
+msgstr "Vyžadováno"
+
+#. Default: "Searchable"
+#. <label for="searchable" i18n:translate="label_searchable">
+#. Searchable
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_searchable"
+msgstr "Prohledávatelné fulltextem"
+
+#. Default: "Sizes"
+#. <label i18n:translate="label_sizes">
+#. Sizes
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_sizes"
+msgstr "Velikosti"
+
+#. Default: "Startup directory"
+#. <label i18n:translate="label_startupdirectory">
+#. Startup directory
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_startupdirectory"
+msgstr "Výchozí adresář"
+
+#. Default: "Storage"
+#. <label i18n:translate="label_storage">
+#. Storage
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_storage"
+msgstr "Úložiště"
+
+#. Default: "Allowable content types"
+#. <label i18n:translate="label_textfield_allowable_ct">
+#. Allowable content types
+#. </label>
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_allowable_ct"
+msgstr "Povolené typy (MIME)"
+
+#. Default: "Default content type"
+#. <label i18n:translate="label_textfield_default_ct">
+#. Default content type
+#. </label>
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_default_ct"
+msgstr "Výchozí typ (MIME)"
+
+#. Default: "Default output type"
+#. <label i18n:translate="label_textfield_default_outtype">
+#. Default output type
+#. </label>
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_default_outtype"
+msgstr "Výstupní MIME"
+
+#. Default: "Validators"
+#. <label i18n:translate="label_validators">
+#. Validators
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_validators"
+msgstr "Validátory"
+
+#. Default: "Visible (Edit)"
+#. <label i18n:translate="label_visible_edit">
+#. Visible (Edit)
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_visible_edit"
+msgstr "Viditelné (při editaci)"
+
+#. Default: "Visible (View)"
+#. <label i18n:translate="label_visible_view">
+#. Visible (View)
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_visible_view"
+msgstr "Viditelné (při zobrazení)"
+
+#. Default: "Vocabulary display path bound"
+#. <label i18n:translate="label_vocabpathbound">
+#. Vocabulary display path bound
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_vocabpathbound"
+msgstr "Hranice pro zobrazení cesty k objektu"
+
+#. Default: "Vocabulary"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_vocabulary"
+msgstr "Slovník hodnot"
+
+#. Default: "Field settings"
+#. <legend i18n:translate="legend_field_settings">
+#. Field settings
+#. </legend>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_field_settings"
+msgstr "Nastavení vlastností pole"
+
+#. Default: "Field visibility"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_field_visibility"
+msgstr ""
+
+#. Default: "Widget settings"
+#. <legend i18n:translate="legend_widget_settings">
+#. Widget settings
+#. </legend>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_widget_settings"
+msgstr "Nastavení vlastností widgetu"
+
+#. Default: "Maintenance"
+#. <h5 i18n:translate="maintenance">
+#. Maintenance
+#. </h5>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "maintenance"
+msgstr "Údržba"
+
+#. Default: "Register Objects"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "register_selection"
+msgstr ""
+
+#. Default: "Rows"
+#. <label i18n:translate="rows">
+#. Rows
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "rows"
+msgstr "Řádky"
+
+#. Default: "Scales"
+#. <legend i18n:translate="scales">
+#. Scales
+#. </legend>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "scales"
+msgstr "Velikosti"
+
+#. Default: "This schema is not configured to update its associated objects"
+#. <b i18n:translate="schema_not_configured_for_update">
+#. This schema is not configured to update its associated objects
+#. </b>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "schema_not_configured_for_update"
+msgstr "Toto schéma nepodporuje aktualizaci asociovaných objektů"
+
+#. Default: "Schematas"
+#. <h5 i18n:translate="schematas">
+#. Schematas
+#. </h5>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "schematas"
+msgstr "Skupiny polí"
+
+#. Default: "select"
+#. <input class="standalone" i18n:attributes="value" name="submit" type="submit" value="select"/>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "select"
+msgstr "Vybrat"
+
+#. Default: "Registered Objects"
+#. <h5 i18n:translate="selection">
+#. Registered Objects
+#. </h5>
+#. Register Objects
+#: ../skins/atse_templates/atse_macros.pt
+msgid "selection"
+msgstr "Registrované typy"
+
+#. Default: "Size"
+#. <legend i18n:translate="size">
+#. Size
+#. </legend>
+#. <label i18n:translate="size">
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "size"
+msgstr "Velikost"
+
+#. Default: "Dump schema to Python"
+#. <a href="#" i18n:translate="text_dump_schema" tal:attributes="href string: ${here/absolute_url}/atse_dump_schema?schema_id=$SCHEMA_ID" target="_blank">
+#. Dump schema to Python
+#. </a>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema"
+msgstr "Exportovat schema (Python)"
+
+#. Default: "Save current schema to backup file"
+#. <a href="#" i18n:translate="text_dump_schema_to_file" tal:attributes="href string: ${here/absolute_url}/atse_dumpSchemaToBackupFile?schema_template=$SCHEMA_TEMPLATE&amp;schema_id=$SCHEMA_ID">
+#. Save current schema to backup file
+#. </a>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema_to_file"
+msgstr "Exportovat definici polí do souboru"
+
+#. Default: "Dump schema to XML"
+#. <a href="#" i18n:translate="text_dump_schema_to_xml" tal:attributes="href string: ${here/absolute_url}/atse_dumpSchemaToXML?schema_id=$SCHEMA_ID" target="_blank">
+#. Dump schema to XML
+#. </a>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema_to_xml"
+msgstr "Exportovat definici polí do XML"
+
+#. Default: "Import file from filesystem (XML):"
+#. <span i18n:translate="text_import_file_xml">
+#. Import file from filesystem (XML):
+#. </span>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_import_file_xml"
+msgstr "Importovat soubor (XML)"
+
+#. Default: "Type"
+#. <label i18n:translate="type">
+#. Type
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "type"
+msgstr "Typ"
+
+#. Default: "Update schema for all managed schemas"
+#. <a href="#" i18n:translate="update_schema_for_all_schemas" onclick="javascript:if (!confirm('Really update all associated objects? This operation cannot be undone!')) {return false;}" tal:attributes="href string: ${here/absolute_url}/atse_updateManagedSchema?portal_type=$SCHEMA_ID&amp;schema_template=$SCHEMA_TEMPLATE">
+#. Update schema for all managed schemas
+#. </a>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "update_schema_for_all_schemas"
+msgstr "Aktualizovat schema pro všechny spravované objekty"
+
+#. Default: "Update schema for all objects in portal (even unmanaged ones)"
+#. <a href="#" i18n:translate="update_schema_for_really_all_schemas" onclick="javascript:if (!confirm('Really update all objects in portal (even unmanaged ones)? This operation cannot be undone!')) {return false;}" tal:attributes="href string: ${here/absolute_url}/atse_updateManagedSchema?portal_type=$SCHEMA_ID&amp;schema_template=$SCHEMA_TEMPLATE&amp;update_all=1">
+#. Update schema for all objects in portal (even unmanaged ones)
+#. </a>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "update_schema_for_really_all_schemas"
+msgstr "Aktualizovat schema pro všechny objekty v portálu (i nespravované)"
+
+#. Default: "Widget"
+#. <label i18n:translate="widget">
+#. Widget
+#. </label>
+#: ../skins/atse_templates/atse_macros.pt
+msgid "widget"
+msgstr "Widget"
+

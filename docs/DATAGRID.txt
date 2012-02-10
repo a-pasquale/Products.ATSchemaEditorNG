@@ -1,0 +1,40 @@
+DataGridField and DataGridWidget support
+========================================
+
+DataGridWidget is defined as list of columns in the form:
+
+column_id|column title[|vocabulary_method][|(type)]
+
+In case of vocabulary_method is defined, SelectColumn will be used instead of Column.
+Invalid column definitions will be silently ignored (will not be stored).
+
+If you define type then the content of each row is validated against the selected
+validator. Possible values: printable, int, decimal, email, notempty
+
+According to DataGridWidget class, vocabulary must be a method of instance class 
+(or something what may be traversed), so solution is to use python script in the active 
+skin layer (portal_skins/custom folder). Since you want to use a SelectColumn, enter id of 
+the python script as vocabulary method. 
+
+Example of the definition:
+--------------------------
+
+column1|Person name
+column2|Company name
+column3|Age|getDGAgeVocabulary
+column4|Year|(int)
+
+portal_skins/custom/getDGAgeVocabulary:
+
+-------- start of python script -------
+from Products.Archetypes import DisplayList
+
+return DisplayList((
+   ('age1', 'up to 13'),
+   ('age2', '14 to 18'),
+   ('age3', '19 to 25'),
+   ('age4', 'above 25'),
+))
+-------- end of python script -------
+
+Please use non-conflicting script names (do not use getAge for example, because it may conflict with another method/script)

@@ -1,0 +1,27 @@
+
++ Simply drop ATSE in your Products directory
++ Restart Zope
++ Use Quickinstaller
+
+ATSE will install a tool that will be used for ToolManagedSchemas.
+For demo types enable them in config.py. Then install a container, some
+types (Target1-3) and try to change some fields.
+
+Make sure to have a look at the new properties in site_properties.
+
+Also make sure you read the notice in README.txt concerning changes
+since version 0.4
+
+If you are using DataGridField:
+
+    ATSE needs patched version of DataGridField!
+
+    Please make sure to apply the included diff (in doc/datagridfield-validatecolumn.diff)
+    to a 1.5.0 version of DataGridField (MoreFieldsAndWidgets/DataGridField/tags/1.5.0).
+    If you don't do this ATSE will not include DataGridFieldSupport!
+
+    Do the following to patch correctly:
+    $ cd <path_to_DataGridField>
+    $ cat version.txt
+    1.5.0
+    $ patch -p 0 < ../ATSchemaEditorNG/doc/datagridfield-validatedcolumn.diff

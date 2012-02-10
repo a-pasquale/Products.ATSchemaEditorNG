@@ -1,0 +1,420 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-03-21 12:24+0000\n"
+"PO-Revision-Date: 2010-12-07 10:01 +001\n"
+"Last-Translator: luca.fabbri <luca.fabbri@redturtle.it>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: ATSchemaEditorNG\n"
+
+#. Default: "Delete"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Delete"
+msgstr "Elimina"
+
+#. Default: "Move down"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Move down"
+msgstr "Sposta giù"
+
+#. Default: "Move up"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Move up"
+msgstr "Sposta su"
+
+#. Default: "Refresh"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "Refresh"
+msgstr "Aggiorna"
+
+#. Default: "Save changes"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Save changes"
+msgstr "Salva modifiche"
+
+#. Default: "Schemata added"
+msgid "atse_added"
+msgstr "Schema aggiunto"
+
+#. Default: "Can not remove the last schema"
+msgid "atse_can_not_remove_last_schema"
+msgstr "Non posso rimuovere l'ultimo schema"
+
+#. Default: "Can not remove this schema because it is protected from deletion"
+msgid "atse_can_not_remove_schema"
+msgstr "Non posso rimuovere questo schema perché protetto dalla cancellazione"
+
+#. Default: "Schemata deleted"
+msgid "atse_deleted"
+msgstr "Schemata rimosso"
+
+#. Default: "Now editing schema for ${portal_type}"
+msgid "atse_editing_schema_for_type"
+msgstr "Stai modificando lo schema per ${portal_type}"
+
+#. Default: "Field name is empty"
+msgid "atse_empty_field_name"
+msgstr "Nome del campo vuoto"
+
+#. Default: "Empty ID given"
+msgid "atse_empty_name"
+msgstr "ID è vuoto"
+
+#. Default: "Schemata \"$schemata\" already exists"
+msgid "atse_exists"
+msgstr "Schema \"$schemata\" già definito"
+
+#. Default: "Field added"
+msgid "atse_field_added"
+msgstr "Campo aggiunto"
+
+#. Default: "\"$id\" already exists"
+msgid "atse_field_already_exists"
+msgstr "\"$id\" già esistente"
+
+#. Default: "Field changed"
+msgid "atse_field_changed"
+msgstr "Campo modificato"
+
+#. Default: "Field deleted"
+msgid "atse_field_deleted"
+msgstr "Campo eliminato"
+
+#. Default: "Field moved to other fieldset"
+msgid "atse_field_moved"
+msgstr "Campo spostato in un altro insieme di campi"
+
+#. Default: "Field moved down"
+msgid "atse_field_moved_down"
+msgstr "Campo spostato in basso"
+
+#. Default: "Field moved up"
+msgid "atse_field_moved_up"
+msgstr "Campo spostato in alto"
+
+#. Default: "field \"$name\" can not be deleted because it is protected from deletion"
+msgid "atse_field_not_deleteable"
+msgstr "il campo \"$name\" nono può essere rimosso perché è protetto dalla cancellazione"
+
+#. Default: "Unmanaged and missing fields have been synchronized"
+msgid "atse_fields_synced"
+msgstr "I campi non gestiti e assenti sono stati sincronizzati"
+
+#. Default: "\"$schemata\" is an invalid ID for a schemata"
+msgid "atse_invalid_id_for_schemata"
+msgstr "\"$schemata\" è un ID invalido per uno schema"
+
+#. Default: "Schemata moved to left"
+msgid "atse_moved_left"
+msgstr "Schema spostato a sinistra"
+
+#. Default: "Schemata moved to right"
+msgid "atse_moved_right"
+msgstr "Schema spostato a destra"
+
+#. Default: "\"$id\" is not a valid ID"
+msgid "atse_not_a_valid_id"
+msgstr "\"$id\" non è un ID valido"
+
+#. Default: "Objects of type ${portal_type} updated successfully"
+msgid "atse_objects_updated"
+msgstr "Oggetti di tipo ${portal_type} aggiornati correttamente"
+
+#. Default: "Schema template added"
+msgid "atse_schema_template_added"
+msgstr "Modello di schema aggiunto"
+
+#. Default: "Schema template deleted"
+msgid "atse_schema_template_deleted"
+msgstr "Modello di schema cancellato"
+
+#. Default: "Schema Template inserted"
+msgid "atse_schema_template_inserted"
+msgstr "Modello di schema inserito"
+
+#. Default: "The schemata contains fields that can not be deleted"
+msgid "atse_schemata_contains_undeleteable_fields"
+msgstr "Lo chema contiene campi che non possono essere cancellati"
+
+#. Default: "unknown field type: $field"
+msgid "atse_unknown_field"
+msgstr "Tipo di campo sconosiuto: $field"
+
+#. Default: "Can not determine portal_type of managed objects (${portal_type})..."
+msgid "atse_unknown_portal_type"
+msgstr "Non è possibile stabilire il portal_type degli oggetti gestiti (${portal_type})..."
+
+#. Default: "unknown widget type: $widget"
+msgid "atse_unknown_widget"
+msgstr "Tipo widget sconosciuto: $widget"
+
+#. Default: "Cols"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "cols"
+msgstr "Colonne"
+
+#. Default: "Field definition for ${field}"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "field_definition"
+msgstr "Definizione del campo ${field}"
+
+#. Default: "Fields"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "fields"
+msgstr "Campi"
+
+#. Default: "Schema Editor"
+#: ../skins/atse_templates/atse_editor.pt
+msgid "heading_schema_editor"
+msgstr "Editor di schema"
+
+#. Default: ATSE Template Editor
+#: ../skins/atse_schemplate_editor.pt
+msgid "heading_schema_template_editor"
+msgstr "Editor di modello ATSE"
+
+#. Default: "Please enter DataGrid columns definition. There are two supported formats. The first one contains only id|title pairs for the particular column, the second one contains id|title|vocabulary_method definition. \"vocabulary_method\" has to be a method defined in the class instance or \"Script (Python)\" defined in the skin layer (for example in portal_skin/custom folder). Vocabulary method/script must return DisplayList instance. The two described line formats may be mixed. Invalid definitions will be silently ignored."
+#: ../skins/atse_templates/datagridfield_macros.pt
+msgid "help_dg_parameters"
+msgstr "Prego inserire la definizione delle colonne DataGrid. Ci sono due formati supportati. Il primo contiene solo coppie id|titolo per la particolare colonna, il secondo contiene id|titolo|metodo_del_vocabolario \"metodo_del_vocabolario\" deve essere un metodo definito nell'istanza di classe o \"Script (Python)\" definito a livello di skin (per esempio nella cartella portal_skin/custom). Il metodo/script del vocabolario deve ritornare l'istanza DisplayList. I formati delle due linee descritte possono essere mischiati. Le definizione invalide verranno ignorate silenziosamente."
+
+#. Default: "Please enter scales to be autogenerated. Each scale on the separate line in the form SCALENAME WIDTH HEIGHT (separated by space). Invalid scales will be ignored."
+#: ../skins/atse_templates/atse_macros.pt
+msgid "help_sizes"
+msgstr "Prego inserire scale di valori da autogenerare. Ogni scala di valori su linee diverse nella forma NOMESCALA LARGHEZZA ALTEZZA (separati da spazio). Scale invalide saranno ignorate"
+
+#. Default: "Use \"key|value\" for passing key-value pairs or 'method:&lt;methodname&gt;' or 'script:'. 'methodname' must be a class method. If you use 'script:', the Python script name is computed automatically and cannot be changed! Generated script name is: ${scriptname}. If there is python script with this name, its return value will be used as source for field vocabulary."
+#: ../skins/atse_templates/atse_macros.pt
+msgid "help_vocabulary"
+msgstr "Usare \"chiave|valore\" per inoltrare le coppie chiave-valore oppure 'metodo:&lt;nome_metodo&gt;' o 'script:'. 'Nome_metodo' deve essere un metodo di classe. Se si utilizza 'script:', il nome dello script Python è digitato automaticamente e non può essere cambiato! Il nome dello script generato è: ${scriptname}. Se esiste uno script python con questo nome, il suo valore di ritorno sarà utilizzato come fonte per il campo del vocabolario."
+
+#. Default: "Allowed Types"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_allowed_types"
+msgstr "Tipi consentiti"
+
+#. Default: "Checkbox bound"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_checkboxbound"
+msgstr "Vincoli dei checkbox"
+
+#. Default: "Default"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_default"
+msgstr "Predefinito"
+
+#. Default: "Description"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_description"
+msgstr "Descrizione"
+
+#. Default: "Columns definition"
+#: ../skins/atse_templates/datagridfield_macros.pt
+msgid "label_dg_columns"
+msgstr "Definizione delle colonne"
+
+#. Default: "Expression"
+#: ../skins/atse_templates/computedfield_postmacro.pt
+msgid "label_expression"
+msgstr "Espressione"
+
+#. Default: "Label"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_label"
+msgstr "Etichetta"
+
+#. Default: "Maximum size: width x height"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_max_size"
+msgstr "Dimensione massima: larghezza x altezza"
+
+#. Default: "Multivalued"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_multivalued"
+msgstr "Multivalore"
+
+#. Default: "Relationship"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_relationship"
+msgstr "Relazione"
+
+#. Default: "Required"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_required"
+msgstr "Richiesto"
+
+#. Default: "Searchable"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_searchable"
+msgstr "Ricercabile"
+
+#. Default: "Sizes"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_sizes"
+msgstr "Dimensioni"
+
+#. Default: "Startup directory"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_startupdirectory"
+msgstr "Directory di avvio"
+
+#. Default: "Storage"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_storage"
+msgstr "Memoria"
+
+#. Default: "Allowable content types"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_allowable_ct"
+msgstr "Tipi di contenuto consentiti"
+
+#. Default: "Default content type"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_default_ct"
+msgstr "Tipo di contenuto predefinito"
+
+#. Default: "Default output type"
+#: ../skins/atse_templates/textfield_postmacro.pt
+msgid "label_textfield_default_outtype"
+msgstr "Tipo di output predefinito"
+
+#. Default: "Validators"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_validators"
+msgstr "Validatori"
+
+#. Default: "Visible (Edit)"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_visible_edit"
+msgstr "Visibile (Modifica)"
+
+#. Default: "Visible (View)"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_visible_view"
+msgstr "Visibile (visualizza)"
+
+#. Default: "Vocabulary display path bound"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_vocabpathbound"
+msgstr ""
+
+#. Default: "Vocabulary"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "label_vocabulary"
+msgstr "Vocabolario"
+
+#. Default: "Field settings"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_field_settings"
+msgstr "Impostazioni del campo"
+
+#. Default: "Field visibility"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_field_visibility"
+msgstr "Visibilità del campo"
+
+#. Default: "Widget settings"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "legend_widget_settings"
+msgstr "Impostazioni del widget"
+
+#. Default: "Maintenance"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "maintenance"
+msgstr "Gestione"
+
+#. Default: "Register Objects"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "register_selection"
+msgstr "Registrare oggetti"
+
+#. Default: "Rows"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "rows"
+msgstr "Righe"
+
+#. Default: "Scales"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "Scale di valori"
+msgstr ""
+
+#. Default: Schema Templates
+#: ../skins/atse_templates/atse_macros.pt
+msgid "schema templates"
+msgstr "Modelli di schema"
+
+#. Default: "This schema is not configured to update its associated objects"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "schema_not_configured_for_update"
+msgstr "Questo schema non è configurato per aggiornare i suoi oggetti associati"
+
+#. Default: "Schematas"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "schematas"
+msgstr "Gruppi di campi"
+
+#. Default: "select"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "select"
+msgstr "seleziona"
+
+#. Default: "Registered Objects"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "selection"
+msgstr "Oggetti registrati"
+
+#. Default: "Size"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "size"
+msgstr "Dimensione"
+
+#. Default: "Dump schema to Python"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema"
+msgstr "Salva schema in Python"
+
+#. Default: "Save current schema to backup file"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema_to_file"
+msgstr "Salva lo schema corrente su file di backup"
+
+#. Default: "Dump schema to XML"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_dump_schema_to_xml"
+msgstr "Salva schema in XML"
+
+#. Default: "Import file from filesystem (XML):"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "text_import_file_xml"
+msgstr "Importa file da disco (XML)"
+
+#. Default: "Type"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "type"
+msgstr "Tipo"
+
+#. Default: "Update schema for all managed schemas"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "update_schema_for_all_schemas"
+msgstr "Aggiorna campi per tutti i gruppi gestiti"
+
+#. Default: "Update schema for all objects in portal (even unmanaged ones)"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "update_schema_for_really_all_schemas"
+msgstr "Aggiorna campi per tutti gli oggetti nel portale (anche non gestiti)"
+
+#. Default: "Widget"
+#: ../skins/atse_templates/atse_macros.pt
+msgid "widget"
+msgstr ""
+

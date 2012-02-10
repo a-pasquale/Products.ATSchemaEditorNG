@@ -1,0 +1,25 @@
+div.left{
+    float: left;
+    margin-right: 0.5em;
+}
+
+div.right {
+    float: right;
+}
+
+div.clear {
+    clear: both;
+}
+
+a#atse_selected {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.portlet div#atse_fieldsets, 
+.portlet div#atse_fields, 
+.portlet div#atse_schemplates,
+.portlet div#atse_fieldeditor, 
+.portlet div#atse_maintenance {
+    padding: 0.5em;
+}

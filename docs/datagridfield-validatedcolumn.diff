@@ -1,0 +1,199 @@
+Index: DataGridField/__init__.py
+===================================================================
+--- DataGridField/__init__.py	(revision 8097)
++++ DataGridField/__init__.py	(working copy)
+@@ -9,6 +9,7 @@
+ from Products.DataGridField.DataGridWidget  import DataGridWidget
+ from Products.DataGridField.DataGridField  import DataGridField
+ from Products.DataGridField.Column import Column
++from Products.DataGridField.ValidatedColumn import ValidatedColumn
+ from Products.DataGridField.SelectColumn import SelectColumn
+ from Products.DataGridField.RadioColumn import RadioColumn
+ from Products.DataGridField.FixedColumn import FixedColumn
+Index: DataGridField/ValidatedColumn.py
+===================================================================
+--- DataGridField/ValidatedColumn.py	(revision 0)
++++ DataGridField/ValidatedColumn.py	(revision 0)
+@@ -0,0 +1,70 @@
++"""
++
++    Column with validation support definition for DataGridField
++
++
++"""
++
++from __future__ import nested_scopes
++__author__ = 'Simon Pamies'
++__docformat__ = 'reStructuredText'
++
++# Python imports
++import StringIO
++
++
++# Zope imports
++from AccessControl import ClassSecurityInfo
++from AccessControl import getSecurityManager
++from Globals import InitializeClass
++
++from ZODB.POSException import ConflictError
++
++# Plone imports
++from Products.CMFCore.utils import getToolByName
++from Products.CMFCore import CMFCorePermissions
++from Products.Archetypes.public import *
++from Products.Archetypes.Field import ObjectField, encode, decode, registerField
++
++# Local imports
++from Products.DataGridField import DataGridWidget
++from Products.DataGridField.interfaces import IDataGridField
++from Products.DataGridField.Column import Column
++
++validator_mapping = {'printable':'isPrintable', 
++                     'int':'isInt',
++                     'notempty':'isNotEmpty',
++                     'decimal':'isDecimal',
++                     'mail':'isEmail'}
++
++class ValidatedColumn(Column):
++    """ Defines column that can be validated """
++
++    security = ClassSecurityInfo()
++
++    def __init__(self, title, validator, default=None):
++        """ Create a ValidatedColumn
++
++        @param vocabulary Vocabulary method name. This method is called
++               from Archetypes instance to get values for dropdown list.
++        """
++
++        Column.__init__(self, title, default=default)
++        self.validator = validator_mapping.get(validator, None)
++        if self.validator is None:
++            raise Exception, '%s is not recognized as valid validator! (Valid ones: %s)' % (validator, validator_mapping.keys())
++
++        self._validator_raw = validator
++
++    def getValidator(self):
++        """ Returns the associated validator """
++
++        return self.validator and self.validator or None
++
++    def getValidatorRaw(self):
++        """ Returns the readable name for the validator """
++
++        return self._validator_raw
++
++# Initializes class security
++InitializeClass(ValidatedColumn)
+Index: DataGridField/DataGridField.py
+===================================================================
+--- DataGridField/DataGridField.py	(revision 8097)
++++ DataGridField/DataGridField.py	(working copy)
+@@ -25,10 +25,12 @@
+ from Products.CMFCore import CMFCorePermissions
+ from Products.Archetypes.public import *
+ from Products.Archetypes.Field import ObjectField, encode, decode, registerField
++from Products.validation.config import validation as validationService
+ 
+ # Local product imports
+ from Products.DataGridField import DataGridWidget
+ from Products.DataGridField.Column import Column
++from Products.DataGridField.ValidatedColumn import ValidatedColumn
+ from Products.DataGridField.interfaces import IDataGridField
+ 
+ # Our logger object
+@@ -98,13 +100,44 @@
+     def getColumnIds(self):
+         """ Return list of column ids """
+         return self.columns
+-    
+-    security.declarePrivate('set')
+-    def set(self, instance, value, **kwargs):
+-        """
+-        The passed in object should be a records object, or a sequence of dictionaries
+-        """
+-        
++
++    security.declarePublic('validate')
++    def validate(self, value, instance, errors=None, **kw):
++        """ Overwriting default validator because we need to validate each row according
++        to the defined type if there is one. """
++
++        if errors is None:
++            errors = {}
++
++        newvalue = self._prepareValue(value)
++
++        # validating against the defined validators if any
++        for item in newvalue:
++            colname = item.keys()[0]
++            columnob = self.widget.columns[colname]
++
++            if isinstance(columnob, ValidatedColumn):
++                validator = columnob.getValidator()
++
++                if validator == 'isNotEmpty' and not item[colname]:
++                    return 'Validation failed (isNotEmpty): No empty fields allowed for column %s!' % columnob.label
++
++                elif validator =='isNotEmpty' and item[colname]:
++                    continue
++
++                # continue for empty stuff - we're ignoring this here
++                elif not item[colname]: continue
++
++                v = validationService.validatorFor(validator)
++                validated = v(item[colname])
++                if validated not in [1, True]:
++                    return validated
++
++        return ObjectField.validate(self, value, instance, errors, **kw)
++
++    def _prepareValue(self, value):
++        """ Here we prepare value for saving and validation """
++
+         # Help to localize problems in Zope trace back
+         __traceback_info__ = value, type(value)
+ 
+@@ -112,23 +145,18 @@
+         cleaned = []
+         doSort = False
+         
+-        logging.debug("Setting DGF value to " + str(value))
+-        
+-        if value == ({},):
++        if value == ({},) or value == '({},)' or not value:
+             # With some Plone versions, it looks like that AT init
+             # causes DGF to get one empty dictionary as the base value
+             # and later, it will be appended as a cleaned row below if 
+             # we don't filter out it here. 
+             value = []
+-            
+         
+         if type(value) in StringTypes:  
+             # In the field mutator (set) the
+             # passed value is not always a record, but sometimes a string.
+             # In fact the RFC822Marshaller passes a string. 
+             
+-            logging.debug("Doing string marshalling")
+-            
+             records = []
+             dict = {}
+             rows = value.strip("{}").split(',')
+@@ -189,7 +217,16 @@
+             # remove order keys when sorting is complete
+             value = tuple([x for (throwaway, x) in cleaned])
+ 
+-        # fill in data
++        return value
++
++    security.declarePrivate('set')
++    def set(self, instance, value, **kwargs):
++        """
++        The passed in object should be a records object, or a sequence of dictionaries
++        """
++        
++        logging.debug("Setting DGF value to " + str(value))
++        value = self._prepareValue(value)
+         ObjectField.set(self, instance, value, **kwargs)
+ 
+     security.declarePrivate('get')
