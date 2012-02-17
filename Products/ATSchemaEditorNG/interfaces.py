@@ -6,7 +6,7 @@ License: see LICENSE.txt
 $Id: interfaces.py 47512 2007-08-17 17:40:22Z spamsch $
 """
 
-from Interface import Interface
+from zope.interface import Interface
 
 class IParentManagedSchema(Interface):
     """ mix-in class for AT content-types whose schema is managed by
