@@ -15,7 +15,7 @@ from Products.CMFCore.utils import UniqueObject
 from Products.CMFCore.ActionProviderBase import ActionProviderBase
 from interfaces import ISchemaEditor
 
-from config import TOOL_NAME
+from config import TOOL_NAME, PROJECT_NAME
 
 class SchemaEditorTool(UniqueObject, ActionProviderBase, BaseFolder, SchemaEditor):
     """ SchemaEditorTool"""
@@ -48,5 +48,5 @@ class SchemaEditorTool(UniqueObject, ActionProviderBase, BaseFolder, SchemaEdito
         BaseFolder.__init__(self, TOOL_NAME)
         self.setTitle('Schema Editor')
 
-registerType(SchemaEditorTool)
+registerType(SchemaEditorTool, PROJECT_NAME)
 

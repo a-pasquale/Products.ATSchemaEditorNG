@@ -15,7 +15,7 @@ from Products.CMFCore.utils import UniqueObject
 from Products.CMFCore.ActionProviderBase import ActionProviderBase
 from interfaces import ISchemaEditor
 
-from config import TOOL2_NAME
+from config import TOOL2_NAME, PROJECT_NAME
 
 class ATSETemplateTool(UniqueObject, ActionProviderBase, BaseFolder, SchemplateEditor):
     """ ATSE Template Tool """
@@ -48,5 +48,5 @@ class ATSETemplateTool(UniqueObject, ActionProviderBase, BaseFolder, SchemplateE
         BaseFolder.__init__(self, TOOL2_NAME)
         self.setTitle('ATSE Template Editor')
 
-registerType(ATSETemplateTool)
+registerType(ATSETemplateTool, PROJECT_NAME)
 
