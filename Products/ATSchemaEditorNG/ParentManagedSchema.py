@@ -6,6 +6,7 @@ License: see LICENSE.txt
 $Id: ParentManagedSchema.py 52127 2007-10-21 11:42:29Z naro $
 """
 
+from zope.interface import implements
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Acquisition import ImplicitAcquisitionWrapper
@@ -26,7 +27,7 @@ class ManagedSchemaBase:
         the parent container and retrieved through acquisition.
     """
 
-    __implements__ = (IParentManagedSchema,)
+    implements(IParentManagedSchema)
 
     security = ClassSecurityInfo()  
     isToolManaged = False
@@ -54,7 +55,7 @@ class ManagedSchemaBase:
                 raise ValueError('Instance has no "schema" attribute defined')
             
         provider = self.lookup_provider()
-        if not ISchemaEditor.isImplementedBy(provider):
+        if not ISchemaEditor.providedBy(provider):
             raise SchemaEditorError, 'Provider -- %s -- can not be recognized as Archetypes Schema Editor! Perhaps you are using ParentManagedSchema derived objects with Tool. A tool can only manage ToolManagedSchema (ParentOrToolManagedSchema) derived objects.' % str(provider).replace('<', '').replace('>','')
 
         if not self.lookup_provider().atse_isSchemaRegistered(self.portal_type):
@@ -248,7 +249,7 @@ class AcquisitionManagedSchema(ManagedSchemaBase):
             if parent is app:
                 raise SchemaEditorError(self.translate('atse_no_provider',
                                                        default="No Schema provider found"))
-            if ISchemaEditor.isImplementedBy(parent):
+            if ISchemaEditor.providedBy(parent):
                 return parent
             else:
                 return get_aq_provider(parent)
@@ -285,7 +286,7 @@ class ParentOrToolManagedSchema(ManagedSchemaBase):
         provider = None
         try:
             provider = self.aq_parent
-            if not ISchemaEditor.isImplementedBy(provider):
+            if not ISchemaEditor.providedBy(provider):
                 if provider.__class__.__name__ == 'FactoryTool':
                     return provider.aq_parent
                 raise SchemaEditorError, ''

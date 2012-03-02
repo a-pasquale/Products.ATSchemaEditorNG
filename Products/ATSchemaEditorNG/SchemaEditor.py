@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 ATSchemaEditorNG
 License: see LICENSE.txt
@@ -10,6 +11,7 @@ __license__ = "LGPL 2.1"
 
 import re, os, urllib
 
+from zope.interface import implements
 from Globals import InitializeClass
 from ExtensionClass import ExtensionClass
 from AccessControl import ClassSecurityInfo
@@ -61,7 +63,7 @@ class SchemaEditor:
 
     security = ClassSecurityInfo()
 
-    __implements__ = (ISchemaEditor,)
+    implements(ISchemaEditor)
 
     atse_authUserHasRole = util._authenticatedUserHasRole
 

@@ -6,6 +6,7 @@ License: see LICENSE.txt
 $Id: SchemaEditorTool.py 47512 2007-08-17 17:40:22Z spamsch $
 """
 
+from zope.interface import implements
 from Globals import DTMLFile, InitializeClass
 from AccessControl.SecurityInfo import ClassSecurityInfo
 from Products.Archetypes.public import *
@@ -22,7 +23,7 @@ class ATSETemplateTool(UniqueObject, ActionProviderBase, BaseFolder, SchemplateE
 
     meta_type = portal_type = 'ATSchemaTemplateTool'
     id = TOOL2_NAME
-    __implements__ = (ISchemaEditor,)
+    implements(ISchemaEditor)
 
     manage_options = ( { 'label'  : 'Actions'
                        , 'action' : 'atse_schemplate_editor'
